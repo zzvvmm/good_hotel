@@ -1,0 +1,9 @@
+<%= form_tag hotels_path, method: :get do %>
+  <%= text_field_tag "term", params[:term], placeholder: "Enter hotel's name" %>
+  <%= submit_tag "Search" %>
+<% end %>
+<ul>
+  <% @hotels.each do |hotel| %>
+    <li><%= hotel.name %></li>
+  <% end %>
+</ul>
