@@ -32,8 +32,10 @@
 			</div>
 			<div class="header-right">
 				<div class="search-bar">
-					<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '検索';}">
-					<input type="submit" value="">
+					<%= form_tag hotels_path, method: :get do %>
+  						<%= text_field_tag "term", params[:term], placeholder: "ホテル名を記入してください。" %>
+  					<%= submit_tag "", type: "submit" %>
+					<% end %>
 				</div>
 				<ul>
 					<li><a href="#"><span class="fb"> </span></a></li>
