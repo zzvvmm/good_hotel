@@ -2,10 +2,17 @@
 	<div class="header-top">
 		<div class="container">
 			<div class="head-main t-head">
-				<a href="index.html" class="head-text">良いホテル</a>
+				<a href="https://good-hotel-manjusaka.c9users.io/" class="head-text">良いホテル</a>
 			</div>
 			<div>
-				<a href="#"><button class="btn-lg">ログイン</button></a>
+				<% if !user_signed_in? %>
+				<%= button_to "ログイン", new_user_session_path, class: "btn-lg" %>
+				<br>
+				<%= button_to "サインアップ", new_user_registration_path,method:'get', class: "btn-lg" %>
+				<% else %>
+					<%= button_to "サインアウト", destroy_user_session_path, 
+                    method: :delete, class: "btn-lg"  %>
+				<% end %>
 			</div>
 		</div>
 	</div>
@@ -49,17 +56,3 @@
 			});
 		</script>
 	<!-- script-for-menu -->
-	<!--banner-starts-->
-	<div class="banner">
-		<div class="container">
-			<div class="banner-top">
-				<div class="banner-text">
-					<h2>Aliquam erat</h2>
-					<h1>Suspendisse potenti</h1>
-					<div class="banner-btn">
-						<a href="single.html">Read More</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
