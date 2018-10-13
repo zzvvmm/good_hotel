@@ -1,0 +1,93 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/* universal */
+
+body {
+  padding-top: 60px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.img-hotel {
+  margin-top: 25px;
+}
+
+.img-hotel .img-hotel-left {
+  padding-left: 0px;
+}
+
+.img-hotel .img-hotel-right {
+  padding-left: 100px;
+}
+
+.img-hotel-left img {
+  width: 860px;
+  height: 450px;
+}
+
+.img-hotel-right img {
+  width: 300px;
+  height: 150px;
+}
+
+.hotel-description {
+  margin-top: 10px;
+  height: 250px;
+  margin-bottom: 10px !important;
+}
+
+// rank
+.rank-hotel {
+  height: 350px !important;
+}
+
+.btn-grey{
+    background-color:#D8D8D8;
+	color:#FFF;
+}
+
+.rating-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px 15px 20px 15px;
+	border-radius:3px;
+}
+
+.bold{
+	font-weight:700;
+}
+
+.padding-bottom-7{
+	padding-bottom:7px;
+}
+
+.review-block{
+	background-color:#FAFAFA;
+	border:1px solid #EFEFEF;
+	padding:15px;
+	border-radius:3px;
+	margin-bottom:15px;
+}
+
+// end rank
+.device-hotel {
+  height: 350px !important;
+}
+
+.map-hotel {
+  height: 350px !important;
+}
+
+// rating-hotel
+.rating-hotel {
+  margin-top: -10px !important;
+  margin-bottom: 10px !important;
+}
+
+// end rating-hotel
+
+.comment {
+  height: 250px !important;
+}
