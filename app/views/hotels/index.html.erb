@@ -1,6 +1,6 @@
 <%= form_tag hotels_path, method: :get do %>
-  <%= text_field_tag "term", params[:term], placeholder: "Enter hotel's name" %>
-  <%= submit_tag "Search" %>
+  <%= text_field_tag "term", params[:term], placeholder: "検索名を記入してください。" %>
+  <%= submit_tag "検索" %>
 <% end %>
 <ul>
   <% @hotels.each do |hotel| %>
