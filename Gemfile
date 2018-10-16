@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-<<<<<<< HEAD
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -44,10 +43,6 @@ gem 'pg_search'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-=======
-gem 'turbolinks'
-gem 'uglifier', '>= 1.3.0'
->>>>>>> 85d3a546527bf734af93fa26dec08e3d66b38ab8
 
 group :development, :test do
   gem 'byebug'

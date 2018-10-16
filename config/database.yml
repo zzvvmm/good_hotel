@@ -1,6 +1,7 @@
 default: &default
   adapter: postgresql
   host: localhost
+  encoding: unicode
   user: ubuntu
   password: 123
 development:
