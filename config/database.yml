@@ -3,7 +3,6 @@ default: &default
   host: localhost
   user: ubuntu
   password: 123
-
 development:
   <<: *default
   database: hotel_dev

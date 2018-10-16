@@ -5,4 +5,6 @@ Rails.application.routes.draw do
         sessions: "users/sessions"
       }
   resources :hotels, only: [:index]
+  resources :hotel_reviews
+  resources :hotels, only: [:index]
 end
