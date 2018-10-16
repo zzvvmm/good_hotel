@@ -36,6 +36,7 @@ gem 'devise'
 gem 'bootstrap-sass', '3.3.7'
 gem 'pg', '~> 0.21'
 gem 'pg_search'
+gem "ratyrate"
 
 gem 'rails_admin', github: 'sferik/rails_admin'
 
