@@ -105,7 +105,7 @@ ul.navig li a:hover ul.navig li a:after{
 @media (max-width: 768px){
 span.menu:before {
 	content: url(nav-icon.png);
-	cursor: pointer;	
+	cursor: pointer;
 	height:32px;
 }
 .header {
@@ -1035,7 +1035,7 @@ ul.blog-ic li {
 }
 ul.blog-ic {
     margin-top: 10px;
-}	
+}
 .comments h3,.comment-bottom h3{
 	width: 17%;
     text-align: center;
@@ -1444,7 +1444,7 @@ ul.navig li a {
 @media (max-width:736px){
 .header-right ul {
     right: 31.7%;
-}	
+}
 .welcome-bottom img {
     width: 100%;
 }
@@ -1578,7 +1578,7 @@ ul.navig {
 @media (max-width:568px){
 .about-one p {
     width: 17.5%;
-}	
+}
 .abt-left h6 {
     width: 40.5%;
 }
@@ -1759,7 +1759,7 @@ h2.head {
 }
 .abt-left h6 {
     width: 52.5%;
-}	
+}
 }
 @media (max-width:384px){
 .header-right ul {
@@ -1771,7 +1771,7 @@ h2.head {
 }
 .abt-left h6 {
     width: 58.5%;
-}	
+}
 .banner-text h2 {
     width: 45%;
 }
