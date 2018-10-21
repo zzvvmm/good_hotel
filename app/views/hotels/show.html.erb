@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="title-hotel">
-		<h1>ホテル名：<%= @review.hotel.name %></h1>
+		<h1>ホテル名：<%= @hotel.name %></h1>
 	</div>
 </div>
 <div class="row">
@@ -24,10 +24,10 @@
 <div class="row">
     <div class="well hotel-description">
         <h3 style="color:green">ホテルの基本情報:</h3>
-        <h4>住所: <%= @review.hotel.address %></h4>
-        <input id="address1" class="hidden-data" value="<%= @review.hotel.address %>"></input>
-        <input id="address2" class="hidden-data" value="<%= @review.hotel.address %>"></input>
-        <h4>電話番号: <%= @review.hotel.phone_number%></h4>
+        <h4>住所: <%= @hotel.address %></h4>
+        <input id="address1" class="hidden-data" value="<%= @hotel.address %>"></input>
+        <input id="address2" class="hidden-data" value="<%= @hotel.address %>"></input>
+        <h4>電話番号: <%= @hotel.phone_number%></h4>
     </div>
 </div>
 <div class="row">
@@ -144,7 +144,7 @@
     </div>
     <div class="col-sm-4 well map-hotel">
         <p>地図</p>
-        <div id="mode-selector" class="controls">
+        <!-- <div id="mode-selector" class="controls">
           <input type="radio" name="type" id="changemode-walking">
           <label for="changemode-walking">Walking</label>
 
@@ -155,10 +155,10 @@
           <label for="changemode-driving">Driving</label>
         </div>
 
-        <div id="map"></div>
-        <script async defer
+        <div id="map"></div> -->
+        <!-- <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEGMQbGWSDr1NX836ETayJrGv3WqHaxo4&libraries=places&callback=initMap">
-        </script>
+        </script> -->
     </div>
 </div>
 <div class="row">
@@ -171,6 +171,38 @@
         <div class="row">
             <div class="comment-content">
                 <p>コメントの内容</p>
+                <ul class="comment-errors"></ul>
+                <div class="blog-comment">
+                  <h2><%= t "comment" %></h2>
+                  <% if user_signed_in? %>
+                  <div class="pb-cmnt-container">
+                    <%= form_for :comment,
+                      url: hotel_comments_path(:hotel_id => @hotel.id),
+                      :html => {:class => "form-inline"}, remote: true do |f| %>
+                      <%= f.text_area :body, placeholder: "Add_a_comment",
+                        class: "box-clear" %><br/>
+                      <%= f.hidden_field :user_id, value: current_user.id, id: "user_hotel" %>
+                      <%= f.hidden_field :hotel_id, value: @hotel.id %>
+                      <%= f.submit "Add Comment",
+                        class: "btn btn-primary pull-right", data: {send: "hotel"} %>
+                    <% end %>
+                  </div>
+                  <hr/>
+                <% else %>
+                  <%= form_for :comment,
+                      url: hotel_comments_path(:hotel_id => @hotel.id),
+                      :html => {:class => "form-inline"}, remote: true do |f| %>
+                    <%= f.hidden_field :hotel_id, value: @hotel.id %>
+                  <% end %>
+                <% end %>
+                <ul class="comments" id="comments_hotel">
+                  <li class="clearfix">
+                    <p>
+                      <%= render @hotel.comments.order(:created_at) %>
+                    </p>
+                  </li>
+                </ul>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -186,3 +218,4 @@
         </div>
     </div>
 </div>
+<div id="comment-modal" class="modal fade"></div>
