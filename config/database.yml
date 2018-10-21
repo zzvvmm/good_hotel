@@ -1,8 +1,8 @@
 default: &default
   adapter: postgresql
   host: localhost
-  user: ubuntu
-  password: 123
+  user: zzvvmm
+  password: 1
 
 development:
   <<: *default
