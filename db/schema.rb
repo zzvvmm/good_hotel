@@ -52,7 +52,10 @@ ActiveRecord::Schema.define(version: 2018_10_09_163121) do
     t.string "name"
     t.string "address"
     t.string "phone_number"
-    t.string "service"
+    t.boolean "wifi", default: false
+    t.boolean "breakfast", default: false
+    t.boolean "pool", default: false
+    t.boolean "parking", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

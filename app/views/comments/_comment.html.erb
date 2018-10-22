@@ -12,7 +12,7 @@
     <% if comment.commentable_type == "Hotel" %>
       <i class="pull-right">
         <small><button class="btn-sm btn-success button<%= comment.id %>">
-          <% if user_signed_in? %><%= t "Reply" %><% end %>
+          <% if user_signed_in? %>Reply<% end %>
         </button></small>
       </i>
     <% end %>
@@ -25,7 +25,7 @@
           class: "btn btn-warning" %></td>
         <td><%= link_to t("delete"), comment_path(comment), method: :delete,
           remote: true, class: "btn btn-danger",
-          data: {confirm: t("are_you_sure?")} %>
+          data: {confirm: "Are you sure?"} %>
         </td>
       <% end %>
     <% end %>

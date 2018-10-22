@@ -1,2 +1,7 @@
 paginate:
+<<<<<<< HEAD
   per: 5
+=======
+  reviews: 5
+  hotels: 5
+>>>>>>> Hotels index

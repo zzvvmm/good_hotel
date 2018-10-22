@@ -4,9 +4,12 @@ class HotelsController < ApplicationController
 
   def index
     if params[:term]
-      @hotels = Hotel.search_by_hotel_name(params[:term]).page(params[:page]).per Settings.paginate.per
+      @hotels = Hotel.search_by_hotel_name(params[:term]).page(params[:page]).per Settings.paginate.hotels
+      @keyword = params[:term]
+    elsif params[:commit] == "Filter"
+      @hotels = Hotel.filter_by_service(params).page(params[:page]).per Settings.paginate.hotels
     else
-      @hotels = Hotel.all.page(params[:page]).per Settings.paginate.per
+      @hotels = Hotel.all.page(params[:page]).per Settings.paginate.hotels
     end
   end
 

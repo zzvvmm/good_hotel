@@ -1114,7 +1114,7 @@ ul.navig {
     padding: 4em 0px;
 }
 .header-top {
-    padding: 1.8em 0px;
+    padding: 0.1em 0px;
 }
 .search-bar {
     width: 110%;
@@ -2096,13 +2096,14 @@ ul.blog-ic {
 .t-head {
 	display: flex;
 }
-.btn-lg {
-	margin-left: 1045px;
+.btn-lg1 {
+	float: right;
 	color: #fff;
-	width: 95px;
-	font-size: 15px;
+	width: 100px;
+	height: 35px;
+	font-size: 14px;
+	margin-left: 10px;
     background: #190608;
-    padding: 9px 0px;
     border: 1px solid #190608;
     border-radius: 5px;
     -webkit-border-radius: 5px;
