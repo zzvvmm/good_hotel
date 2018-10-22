@@ -1,2 +1,2 @@
 paginate:
-  reviews: 5
+  per: 5

@@ -1,60 +1,37 @@
-<!--header-top-starts-->
-	<div class="header-top">
-		<div class="container">
-			<div class="head-main t-head">
-				<a href="https://good-hotel-manjusaka.c9users.io/" class="head-text">良いホテル</a>
-			</div>
-			<div>
-				<% if !user_signed_in? %>
-				<%= button_to "ログイン", new_user_session_path, class: "btn-lg" %>
-				<br>
-				<%= button_to "サインアップ", new_user_registration_path,method:'get', class: "btn-lg" %>
-				<% else %>
-					<%= button_to "サインアウト", destroy_user_session_path, 
-                    method: :delete, class: "btn-lg"  %>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+			<%= link_to "いいホテル", root_path, class: "navbar-brand" %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "ホテル一覧", hotels_path %></li>
+      </ul>
+      <div class="navbar-form navbar-left" role="search">
+				<%= form_tag hotels_path, method: :get do %>
+        <div class="form-group">
+					<%= text_field_tag "term", params[:term],
+					placeholder: "ホテル名を記入してください。", class: "form-control" %>
+        </div>
+				<%= submit_tag "検索", type: "submit", class: "btn btn-default" %>
 				<% end %>
-			</div>
-		</div>
-	</div>
-	<!--header-top-end-->
-	<!--start-header-->
-	<div class="header">
-		<div class="container">
-			<div class="head">
-			<div class="navigation">
-				 <span class="menu"></span> 
-					<ul class="navig">
-						<li><a href="index.html"  class="active">ホテル名</a></li>
-						<li><a href="about.html">場所</a></li>
-						<li><a href="gallery.html">価格</a></li>
-						<li><a href="typo.html">検索</a></li>
-					</ul>
-			</div>
-			<div class="header-right">
-				<div class="search-bar">
-					<%= form_tag hotels_path, method: :get do %>
-  						<%= text_field_tag "term", params[:term], placeholder: "ホテル名を記入してください。" %>
-  					<%= submit_tag "", type: "submit" %>
-					<% end %>
-				</div>
-				<ul>
-					<li><a href="#"><span class="fb"> </span></a></li>
-					<li><a href="#"><span class="twit"> </span></a></li>
-					<li><a href="#"><span class="pin"> </span></a></li>
-					<li><a href="#"><span class="rss"> </span></a></li>
-					<li><a href="#"><span class="drbl"> </span></a></li>
-				</ul>
-			</div>
-				<div class="clearfix"></div>
-			</div>
-			</div>
-		</div>	
-	<!-- script-for-menu -->
-	<!-- script-for-menu -->
-		<script>
-			$("span.menu").click(function(){
-				$(" ul.navig").slideToggle("slow" , function(){
-				});
-			});
-		</script>
-	<!-- script-for-menu -->
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+				<% if !user_signed_in? %>
+	        <li><%= link_to "ログイン", new_user_session_path %></li>
+					<li><%= link_to "サインアップ", new_user_registration_path %></li>
+				<% else %>
+					<li><%= link_to "サインアウト", destroy_user_session_path,
+					method: :delete %></li>
+				<% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

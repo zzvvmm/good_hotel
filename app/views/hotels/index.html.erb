@@ -1,23 +1,8 @@
-<%= form_tag hotels_path, method: :get do %>
-  <%= text_field_tag "term", params[:term], placeholder: "検索名を記入してください。" %>
-  <%= submit_tag "検索" %>
-<% end %>
-<ul>
-  <% @hotels.each do |hotel| %>
-    <li><%= hotel.name %></li>
-  <% end %>
-</ul>
-
-<div class="row">
-    <div class="title">
-        <h1>Ket qua tim kiem</h1>
-    </div>
-</div>
 <div class="row">
     <div class="col-sm-3 sidebar">
         <div class="row">
             <div>
-                <h2>thiet bi vaf dich vu</h2>
+                <h2>設備やサービス</h2>
                 <div class="list-group">
                     <a href="#" class="list-group-item">First item</a>
                     <a href="#" class="list-group-item">Second item</a>
@@ -27,12 +12,7 @@
         </div>
         <div class="row">
             <div>
-                <h2>Khoang cach</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                <h2>Co so vat chat</h2>
+                <h2>レート</h2>
                 <div class="list-group">
                     <a href="#" class="list-group-item">First item</a>
                     <a href="#" class="list-group-item">Second item</a>
@@ -42,17 +22,7 @@
         </div>
         <div class="row">
             <div>
-                <h2>Xep hang cua moi nguoi</h2>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">First item</a>
-                    <a href="#" class="list-group-item">Second item</a>
-                    <a href="#" class="list-group-item">Third item</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                <h2>loai khach san</h2>
+                <h2>ホテルクラス</h2>
                 <div class="list-group">
                     <a href="#" class="list-group-item">First item</a>
                     <a href="#" class="list-group-item">Second item</a>
@@ -62,48 +32,7 @@
         </div>
     </div>
     <div class="col-sm-9 info" >
-        <div class="row well hotel">
-            <div class="col-sm-4 hotel-img">
-                <%= link_to image_tag("hotel.jpg", alt: "hotel logo")%>
-            </div>
-            <div class="col-sm-5 hotel-information">
-                <p>adafhaofhavvavhaovnfioahoivhiosdv</p>
-            </div>
-        </div>
-        <div class="row well hotel">
-            <div class="col-sm-4 hotel-img">
-                <%= link_to image_tag("hotel.jpg", alt: "hotel logo")%>
-            </div>
-            <div class="col-sm-5 hotel-information">
-                <p>adafhaofhavvavhaovnfioahoivhiosdv</p>
-            </div>
-        </div>
-        <div class="row well hotel">
-            <div class="col-sm-4 hotel-img">
-                <%= link_to image_tag("hotel.jpg", alt: "hotel logo")%>
-            </div>
-            <div class="col-sm-5 hotel-information">
-                <p>adafhaofhavvavhaovnfioahoivhiosdv</p>
-            </div>
-        </div>
-        <div class="row well hotel">
-            <div class="col-sm-4 hotel-img">
-                <%= link_to image_tag("hotel.jpg", alt: "hotel logo")%>
-            </div>
-            <div class="col-sm-5 hotel-information">
-                <p>adafhaofhavvavhaovnfioahoivhiosdv</p>
-            </div>
-        </div>
-        <div class="row">
-            <ul class="pager">
-                <li><a href="#">Previous</a></li>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
-        </div>
+      <%= render @hotels %>
+      <%= paginate @hotels%>
     </div>
 </div>
