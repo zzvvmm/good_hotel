@@ -1,38 +1,80 @@
 <div class="row">
+    <div class="title">
+        <% if @keyword %>
+            <h1>検索結果</h1>
+        <% end %>
+    </div>
+</div>
+<div class="row">
     <div class="col-sm-3 sidebar">
         <div class="row">
             <div>
                 <h2>設備やサービス</h2>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">First item</a>
-                    <a href="#" class="list-group-item">Second item</a>
-                    <a href="#" class="list-group-item">Third item</a>
-                </div>
+                <%= form_tag '', method: :get do %>
+                    <div class="list-group">
+                        <p class="list-group-item">
+                            <%= check_box_tag 'wifi' %>無料Wi-Fi
+                        </p>
+                        <p class="list-group-item">
+                            <%= check_box_tag 'breakfast' %>朝食込み
+                        </p>
+                        <p class="list-group-item">
+                            <%= check_box_tag 'pool' %>プール
+                        </p>
+                        <p class="list-group-item">
+                            <%= check_box_tag 'parking' %>無料駐車場
+                        </p>
+                        <br>
+                        <%= submit_tag "Filter", class: "btn btn-primary" %>
+                    </div>
+                <% end %>
             </div>
         </div>
         <div class="row">
             <div>
-                <h2>レート</h2>
+                <h2>旅行者の評価</h2>
                 <div class="list-group">
-                    <a href="#" class="list-group-item">First item</a>
-                    <a href="#" class="list-group-item">Second item</a>
-                    <a href="#" class="list-group-item">Third item</a>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div>
-                <h2>ホテルクラス</h2>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">First item</a>
-                    <a href="#" class="list-group-item">Second item</a>
-                    <a href="#" class="list-group-item">Third item</a>
+                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-sm-9 info" >
-      <%= render @hotels %>
-      <%= paginate @hotels%>
+    <div class="col-sm-8 info" >
+        <div class="row">
+            <ul class="pager">
+                <%= paginate @hotels, :theme => 'twitter-bootstrap' %>
+            </ul>
+        </div>
+        <% @hotels.each do |hotel| %>
+            <div class="row well hotel">
+                <div class="col-sm-7 hotel-img">
+                    <%= link_to image_tag("hotel.jpg", alt: "hotel logo")%>
+                </div>
+                <div class="col-sm-5 hotel-information">
+                    <h4><%= link_to hotel.name, hotel_path(hotel.id) %></h4>
+                    <p><%= hotel.address %></p>
+                    <p><%= link_to "詳細を見る", hotel_path(hotel.id) %></p>
+                </div>
+            </div>
+        <% end %>
+        <div class="row">
+            <ul class="pager">
+                <%= paginate @hotels, :theme => 'twitter-bootstrap' %>
+            </ul>
+        </div>
     </div>
 </div>

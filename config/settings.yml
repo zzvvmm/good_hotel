@@ -1,2 +1,4 @@
 paginate:
   per: 5
+  reviews: 5
+  hotels: 5

@@ -1,5 +1,6 @@
 source "https://rubygems.org"
 
+gem 'bootstrap-kaminari-views'
 gem "bootstrap-sass", "3.3.7"
 gem "coffee-rails"
 gem "config"

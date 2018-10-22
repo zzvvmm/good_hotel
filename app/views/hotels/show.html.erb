@@ -120,7 +120,7 @@
 					</div>
 					<div class="pull-right" style="margin-left:10px;">0</div>
 				</div>
-		</div>
+		  </div>
     </div>
     <div class="col-sm-4 well device-hotel">
         <h2>設備やサービス</h2>
@@ -165,16 +165,14 @@
     <div class="well comment">
         <div class="row">
             <div class="comment-content">
-                <p>コメントの内容</p>
                 <ul class="comment-errors"></ul>
                 <div class="blog-comment">
-                  <h2><%= t "comment" %></h2>
                   <% if user_signed_in? %>
                   <div class="pb-cmnt-container">
                     <%= form_for :comment,
                       url: hotel_comments_path(:hotel_id => @hotel.id),
                       :html => {:class => "form-inline"}, remote: true do |f| %>
-                      <%= f.text_area :body, placeholder: "Add_a_comment",
+                      <%= f.text_area :body, placeholder: "Add a comment",
                         class: "box-clear" %><br/>
                       <%= f.hidden_field :user_id, value: current_user.id, id: "user_hotel" %>
                       <%= f.hidden_field :hotel_id, value: @hotel.id %>
@@ -184,6 +182,7 @@
                   </div>
                   <hr/>
                 <% else %>
+                  <p>コメントのために<%= link_to "ログイン", new_user_session_path %>下さい</p>
                   <%= form_for :comment,
                       url: hotel_comments_path(:hotel_id => @hotel.id),
                       :html => {:class => "form-inline"}, remote: true do |f| %>
@@ -199,17 +198,6 @@
                 </ul>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <ul class="pager">
-                <li><a href="#">Previous</a></li>
-                <li><a href="#">1</a></li>
-                <li class="active"><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">Next</a></li>
-            </ul>
         </div>
     </div>
 </div>

@@ -3,7 +3,7 @@ var jsonObj = [];
 
 function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 5,
+    zoom: 15,
     center: {lat: 21, lng: 105.8}
   });
 
@@ -14,20 +14,14 @@ function initMap() {
     panel: document.getElementById('right-panel')
   });
 
-  directionsDisplay.addListener('directions_changed', function() {
-    computeTotalDistance(directionsDisplay.getDirections());
-  });
   var origin = document.getElementById('address1').value;
   var destination = document.getElementById('address2').value;
 
-  displayRoute(origin, destination, directionsService,
-      directionsDisplay);
   var geocoder_origin = new google.maps.Geocoder();
   var geocoder_destination = new google.maps.Geocoder();
   geocodeAddress(geocoder_origin, origin, destination, 0);
   geocodeAddress(geocoder_destination, destination, destination, 0);
 
-  new AutocompleteDirectionsHandler(map);
 }
 
 function geocodeAddress(geocoder, address, plant_des, plant_id) {
@@ -45,32 +39,6 @@ function geocodeAddress(geocoder, address, plant_des, plant_id) {
       alert('Geocode was not successful for the following reason: ' + status);
     }
   });
-}
-
-function displayRoute(origin, destination, service, display) {
-  service.route({
-    origin: origin,
-    destination: destination,
-    waypoints: jsonObj,
-    travelMode: 'DRIVING',
-    avoidTolls: true
-  }, function(response, status) {
-    if (status === 'OK') {
-      display.setDirections(response);
-    } else {
-      alert('Could not display directions due to: ' + status);
-    }
-  });
-}
-
-function computeTotalDistance(result) {
-  var total = 0;
-  var myroute = result.routes[0];
-  for (var i = 0; i < myroute.legs.length; i++) {
-    total += myroute.legs[i].distance.value;
-  }
-  total = total / 1000;
-  document.getElementById('total').innerHTML = total + ' km';
 }
 
 function AutocompleteDirectionsHandler(map) {
@@ -102,7 +70,8 @@ AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(aut
             place: {
                 placeId: place.place_id,
                 location: result.geometry.location
-            }
+            },
+            zoom: 2
         });
     });
   });

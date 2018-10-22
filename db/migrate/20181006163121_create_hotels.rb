@@ -4,7 +4,10 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :address
       t.string :phone_number
-      t.string :service
+      t.boolean :wifi, default: false
+      t.boolean :breakfast, default: false
+      t.boolean :pool, default: false
+      t.boolean :parking, default: false
 
       t.timestamps
     end

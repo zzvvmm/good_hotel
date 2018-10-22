@@ -89,7 +89,7 @@ textarea {
 // end rating-hotel
 
 .comment {
-  height: 250px !important;
+  height: 200px !important;
 }
 
 #map {
@@ -118,6 +118,7 @@ textarea {
 }
 .title {
   font-weight: bold;
+  text-align: center;
 }
 #infowindow-content {
   display: none;
@@ -134,4 +135,7 @@ textarea {
 }
 .hidden-data {
   display: none;
+}
+.info {
+  margin-left: 20px;
 }
