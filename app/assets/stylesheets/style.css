@@ -682,7 +682,9 @@ ul.navig li a.active{
 /*--flexisel--*/
 /*--footer-starts--*/
 .footer{
-	padding:2em 0px;
+	position: fixed;
+  bottom: 0;
+  right: 0;
 	box-shadow: 0px 1px 9px 1px rgba(0, 0, 0, 0.11);
 	text-align:center;
 }
@@ -1190,10 +1192,13 @@ ul.navig li a {
     padding: 0em 1.5em;
 }
 .footer {
-    padding: 1.8em 0px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
 }
 .footer-text p {
     font-size: 14px;
+    text-align: center;
 }
 .search-bar input[type="text"] {
     font-size: 13px;
@@ -1429,10 +1434,13 @@ ul.navig li a {
     padding-bottom: 3em;
 }
 .footer {
-    padding: 1.5em 0px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
 }
 .footer-text p {
     font-size: 13px;
+    text-align: center;
 }
 .label {
     font-size: 67%;
@@ -1683,7 +1691,9 @@ ul.navig {
     margin-top: 0em;
 }
 .footer {
-    padding: 1.3em 0px;
+	position: absolute;
+  bottom: 0;
+  text-align: center;
 }
 .abt-one p {
     width: 86%;
@@ -2007,9 +2017,12 @@ ul.navig {
 }
 .footer-text p {
     line-height: 1.6em;
+    text-align: center;
 }
 .footer {
-    padding: 1em 0px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
 }
 .abt-2 ul li {
     margin: 4px 0px 0px 20px;
