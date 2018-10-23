@@ -1,5 +1,5 @@
 <li class="clearfix" id="comment_overall<%= comment.id %>">
-  <%= image_tag("https://bootdey.com/img/Content/user_3.jpg",class: "avatar")%>
+  <%= image_tag(comment.user.avatar_url, class: "avatar")%>
   <div class="post-comments">
     <p class="meta"><span id="comment_time<%= comment.id %>">
       <% if (comment.created_at == comment.updated_at) %>
