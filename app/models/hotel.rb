@@ -7,6 +7,8 @@ class Hotel < ApplicationRecord
   has_many :hotel_reviews
   has_many :comments, as: :commentable, dependent: :destroy
 
+  ratyrate_rateable "service"
+
   def self.filter_by_service(params)
     services = params.keys & ["wifi", "pool", "breakfast", "parking"]
     hotels = Hotel.all

@@ -8,11 +8,17 @@
   <%= f.label :email, "メールアドレス" %>
   <%= f.email_field :email, class: "form-control" %>
 
-  <%= f.label :password, "パスワード" %>
-  <%= f.password_field :password, class: "form-control" %>
+  <% unless resource %>
+    <%= f.label :password, "パスワード" %>
+    <%= f.password_field :password, class: "form-control" %>
 
-  <%= f.label :password_confirmation, "パスワード確認" %>
-  <%= f.password_field :password_confirmation, class: "form-control" %>
+    <%= f.label :password_confirmation, "パスワード確認" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  <% end %>
+  <br>
+  <%= f.hidden_field(:avatar_cache) %>
+  <%= image_tag(resource.avatar_url, size: "150x150") if resource.avatar? %>
+  <%= f.file_field(:avatar) %>
 
   <br>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

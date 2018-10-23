@@ -8,6 +8,8 @@ Rails.application.routes.draw do
         sessions: "users/sessions"
       }
 
+  resources :users, only: :show
+
   resources :hotel_reviews
 
   resources :hotels do

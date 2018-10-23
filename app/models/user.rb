@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :hote_reviews, dependent: :destroy
   has_many :comments, dependent: :destroy
+  mount_uploader :avatar, AvatarUploader
 end

@@ -21,7 +21,9 @@ gem "sdoc", "~> 0.4.0", group: :doc
 gem "turbolinks"
 gem "uglifier", ">= 1.3.0"
 gem "kaminari"
-gem 'twitter-bootstrap-rails', :group => :assets 
+gem 'twitter-bootstrap-rails', :group => :assets
+gem "cloudinary"
+gem 'carrierwave'
 
 group :development, :test do
   gem "byebug"

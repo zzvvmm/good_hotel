@@ -1,35 +1,33 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-			<%= link_to "いいホテル", root_path, class: "navbar-brand" %>
+      <%= link_to "いいホテル", root_path, class: "navbar-brand" %>
     </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav">
         <li><%= link_to "ホテル一覧", hotels_path %></li>
       </ul>
       <div class="navbar-form navbar-left" role="search">
-				<%= form_tag hotels_path, method: :get do %>
-        <div class="form-group">
-					<%= text_field_tag "term", params[:term],
-					placeholder: "ホテル名を記入してください。", class: "form-control" %>
-        </div>
-				<%= submit_tag "検索", type: "submit", class: "btn btn-default" %>
-				<% end %>
+        <%= form_tag(hotels_path, method: "get") do %>
+          <%= text_field_tag "term", params[:term], placeholder: "ホテル名を記入してください。", class: "form-control" %>
+          <%= submit_tag "検索", type: "submit", class: "btn btn-default" %>
+        <% end %>
       </div>
       <ul class="nav navbar-nav navbar-right">
-				<% if !user_signed_in? %>
+        <% if !user_signed_in? %>
 	        <li><%= link_to "ログイン", new_user_session_path %></li>
 					<li><%= link_to "サインアップ", new_user_registration_path %></li>
 				<% else %>
 					<li><%= link_to "サインアウト", destroy_user_session_path,
 					method: :delete %></li>
+          <li><%= link_to current_user.name, current_user %></li>
 				<% end %>
       </ul>
     </div>
