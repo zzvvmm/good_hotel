@@ -34,23 +34,20 @@
     <div class="col-sm-4 well rank-hotel">
         <div class="row">
 			<div class="rating-block">
-				<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
-				<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				</button>
-				<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				</button>
-				<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				</button>
-				<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-					 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				</button>
-				<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-					 <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-				</button>
-				<span class="glyphicon glyphicon-user"></span>1,050,008 total
+				<h2 class="bold padding-bottom-7"><%if @rate_avg %><%=@rate_avg%><%else%>0<% end %> <small>/ 5</small></h2>
+				<% (1..5).step(1) do |i| %>
+					<% if @rate && i <= @rate.rate %>
+						<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-warning btn-sm",
+							aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<% end %>
+					<% else %>
+						<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-default btn-grey btn-sm",
+							aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<% end %>
+					<% end %>
+				<% end %>
 			</div>
 		</div>
 		<div class="row">
