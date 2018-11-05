@@ -23,3 +23,6 @@ users = User.order(:created_at).take(6)
   HotelReview.create!(hotel_id: rand(1..10), user_id: rand(1..6), review: rand(1..5))
   # users.each {|user| user.hotel_reviews.create!(hotel_id: rand(1..10), review: review)}
 end
+
+Admin.create!(email: "admin@gmail.com",
+              password: "adminadmin")
