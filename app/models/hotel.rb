@@ -3,8 +3,7 @@ class Hotel < ApplicationRecord
   pg_search_scope :search_by_hotel_name, against: [:name],
     using: {tsearch: {dictionary: 'english', prefix: true, any_word: true}}
   has_many :comments, as: :commentable, dependent: :destroy
-
-  ratyrate_rateable "service"
+  has_many :rates, dependent: :destroy
 
   def self.filter_by_service(params)
     services = params.keys & ["wifi", "pool", "breakfast", "parking"]
