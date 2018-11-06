@@ -37,11 +37,12 @@ class HotelsController < ApplicationController
       @rate.update_attributes(rate: params[:start])
     end
 
-    @rate_avg = 0
+    rate_avg = 0
     @hotel.rates.to_a.each do |rate|
-      @rate_avg += rate.rate
+      rate_avg += rate.rate
     end
-    @rate_avg = @rate_avg.to_f / @hotel.rates.to_a.size.to_f
+    rate_avg = @rate_avg.to_f / @hotel.rates.to_a.size.to_f
+    @hotel.update_attributes(rate_avg: rate_avg)
   end
 
   def edit; end
