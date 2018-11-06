@@ -17,3 +17,17 @@
 //= require cloudinary
 //= require social-share-button
 //= require_tree .
+function handleStar(i) {
+  var j,k;
+  document.getElementById("star").value = i;
+  for (j = 0; j < i; j++) {
+    var idname = 'star'.concat(j);
+    document.getElementById(idname).className = "btn btn-success btn-sm";
+  }
+
+  for (k = i; k < 5; k++) {
+    var idname = 'star'.concat(k);
+    document.getElementById(idname).className = "btn btn-grey btn-sm";
+
+  }
+}

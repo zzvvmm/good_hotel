@@ -6,44 +6,53 @@
 					<div class="about-tre head-bt">
 					<a href="#"><button class="btn-gt">おすすめのスポット</button></a>
 						<div class="a-1 r-bn">
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h1.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">アリカホテル</a></h3>
-								
-							</div>
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h2.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">フクイホテル</a></h3>
-								
-							</div>
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h3.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">フオカホテフ</a></h3>
-								
-							</div>
+							<% top3 = Hotel.order(rate_avg: :desc).first(3) %>
+							<% top3.each do |top| %>
+								<div class="col-md-4 abt-left">
+									<%= image_tag top.hotel_pictures.first.picture.url, alt:"", class:"img-bn" %>
+									<h3><%= link_to top.name, hotel_path(top) %></h3>
+									<div class="rating-block">
+                        <h2 class="bold padding-bottom-7"><%if top.rate_avg %><%= top.rate_avg.round(2)%><%else%>0<% end %> <small>/ 5</small></h2>
+                        	<% (1..5).step(1) do |i| %>
+                            <% if @rate && i <= @rate.rate %>
+                                <%= button_to(hotel_path(top.id), method: :get, type: "button", class: "btn btn-warning btn-sm",
+                                    aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <% end %>
+                            <% else %>
+                                <%= button_to(hotel_path(top.id), method: :get, type: "button", class: "btn btn-default btn-grey btn-sm",
+                                    aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    </div>
+                </div>
+								</div>
+							<% end %>
 							<div class="clearfix"></div>
-						</div>	
+						</div>
 					<a href="#"><button class="btn-gt">パーティーにうってつけのスポット</button></a>
 						<div class="a-1 r-bn">
 							<div class="col-md-4 abt-left">
 								<a href="single.html"><%= image_tag "h4.jpg",alt:"", class:"img-bn" %></a>
 								<h3><a href="single.html">ナゴヤホテル</a></h3>
-								
+
 							</div>
 							<div class="col-md-4 abt-left">
 								<a href="single.html"><%= image_tag "h5.jpg",alt:"", class:"img-bn" %></a>
 								<h3><a href="single.html">サクラホテフ</a></h3>
-								
+
 							</div>
 							<div class="col-md-4 abt-left">
 								<a href="single.html"><%= image_tag "h6.jpg",alt:"", class:"img-bn" %></a>
 								<h3><a href="single.html">フジホテル</a></h3>
-								
+
 							</div>
 							<div class="clearfix"></div>
-						</div>	
-					</div>		
-			</div>		
+						</div>
+					</div>
+			</div>
 		</div>
 	</div>
 	<!--about-end-->
@@ -65,68 +74,68 @@
 							<%= image_tag "h8.jpg",class:"img-responsive", alt:"" %>
 						</div>
 					</a>
-				</li>			
+				</li>
 				<li>
 					<a href="#">
 						<div class="banner-1">
 							<%= image_tag "h9.jpg",class:"img-responsive", alt:"" %>
 						</div>
 					</a>
-				</li>		
+				</li>
 				<li>
 					<a href="#">
 						<div class="banner-1">
 							<%= image_tag "h10.jpg",class:"img-responsive", alt:"" %>
 						</div>
 					</a>
-				</li>	
+				</li>
 				<li>
 					<a href="#">
 						<div class="banner-1">
 							<%= image_tag "h3.jpg",class:"img-responsive", alt:"" %>
 						</div>
 					</a>
-				</li>	
+				</li>
 				<li>
 					<a href="#">
 						<div class="banner-1">
 							<%= image_tag "h2.jpg", class:"img-responsive", alt:"" %>
 						</div>
 					</a>
-				</li>				
+				</li>
 			</ul>
-							
+
 							 <script type="text/javascript">
 								$(window).load(function() {
-									
+
 									$("#flexiselDemo3").flexisel({
 										visibleItems: 5,
 										animationSpeed: 1000,
 										autoPlay: true,
-										autoPlaySpeed: 3000,    		
+										autoPlaySpeed: 3000,
 										pauseOnHover: true,
 										enableResponsiveBreakpoints: true,
-										responsiveBreakpoints: { 
-											portrait: { 
+										responsiveBreakpoints: {
+											portrait: {
 												changePoint:480,
 												visibleItems: 2
-											}, 
-											landscape: { 
+											},
+											landscape: {
 												changePoint:640,
 												visibleItems: 3
 											},
-											tablet: { 
+											tablet: {
 												changePoint:768,
 												visibleItems: 3
 											}
 										}
 									});
-									
+
 								});
 								</script>
 								<%= javascript_include_tag 'jquery.flexisel.js', type: "text/javascript"%>
 					<div class="clearfix"> </div>
 			</div>
 		</div>
-	</div>	
+	</div>
 	<!--slide-end-->
