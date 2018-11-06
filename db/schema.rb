@@ -56,7 +56,6 @@ ActiveRecord::Schema.define(version: 2018_11_05_152126) do
     t.integer "hotel_id"
     t.integer "user_id"
     t.integer "review"
-    t.float "rate_avg", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -69,6 +68,7 @@ ActiveRecord::Schema.define(version: 2018_11_05_152126) do
     t.boolean "breakfast", default: false
     t.boolean "pool", default: false
     t.boolean "parking", default: false
+    t.decimal "rate_avg", default: "0.0"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

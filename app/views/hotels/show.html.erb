@@ -28,6 +28,7 @@
         <input id="address1" class="hidden-data" value="<%= @hotel.address %>"></input>
         <input id="address2" class="hidden-data" value="<%= @hotel.address %>"></input>
         <h4>電話番号: <%= @hotel.phone_number%></h4>
+				<%= social_share_button_tag(@hotel.name) %>
     </div>
 </div>
 <div class="row">

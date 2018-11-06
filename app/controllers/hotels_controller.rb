@@ -42,7 +42,7 @@ class HotelsController < ApplicationController
       rate_avg += rate.rate
     end
     rate_avg = @rate_avg.to_f / @hotel.rates.to_a.size.to_f
-    @hotel.update_attibutes(rate_avg: rate_avg)
+    @hotel.update_attributes(rate_avg: rate_avg)
   end
 
   def edit; end

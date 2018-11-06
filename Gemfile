@@ -23,6 +23,7 @@ gem "kaminari"
 gem 'twitter-bootstrap-rails', :group => :assets
 gem "cloudinary"
 gem 'carrierwave'
+gem 'social-share-button'
 
 group :development, :test do
   gem "byebug"
