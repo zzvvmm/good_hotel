@@ -14,7 +14,6 @@ gem "pg_search"
 gem "rails", "5.2.1"
 gem "rails_admin", github: "sferik/rails_admin"
 gem "railties"
-gem "ratyrate"
 gem "redis", "~> 3.0"
 gem "sass-rails", "~> 5.0"
 gem "sdoc", "~> 0.4.0", group: :doc

@@ -4,9 +4,9 @@ RailsAdmin.config do |config|
 
   ## == Devise ==
   config.authenticate_with do
-    warden.authenticate! scope: :user
+    warden.authenticate! scope: :admin
   end
-  config.current_user_method(&:current_user)
+  config.current_user_method(&:current_admin)
 
   ## == Cancan ==
   # config.authorize_with :cancan
@@ -26,12 +26,18 @@ RailsAdmin.config do |config|
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
-    new
+    new do
+      only ["Admin"]
+    end
     export
     bulk_delete
     show
-    edit
-    delete
+    edit do
+      only ["Hotel"]
+    end
+    delete do
+      except ["Admin"]
+    end
     show_in_app
 
     ## With an audit adapter, you can add:
