@@ -18,7 +18,7 @@ GIT
 
 GIT
   remote: https://github.com/stympy/faker.git
-  revision: a9f579d70aa907be7bf895f84cff186124bd9484
+  revision: 62b5857970218fc7615deb12d844fc4645c4c69f
   branch: master
   specs:
     faker (1.9.1)
@@ -157,7 +157,7 @@ GEM
       domain_name (~> 0.5)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    jbuilder (2.7.0)
+    jbuilder (2.8.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
     jquery-rails (4.3.3)
@@ -214,7 +214,7 @@ GEM
       activesupport (>= 4.2)
       arel (>= 6)
     puma (3.12.0)
-    rack (2.0.5)
+    rack (2.0.6)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)

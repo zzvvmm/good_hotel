@@ -24,6 +24,7 @@ gem 'twitter-bootstrap-rails', :group => :assets
 gem "cloudinary"
 gem 'carrierwave'
 gem 'social-share-button'
+gem 'figaro'
 
 group :development, :test do
   gem "byebug"

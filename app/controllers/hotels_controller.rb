@@ -28,21 +28,23 @@ class HotelsController < ApplicationController
   end
 
   def show
-    @rate = @hotel.rates.find_by(id: current_user.id)
-    if (params[:start] && !@rate)
-      @rate = Rate.create(user_id: current_user.id,hotel_id: @hotel.id, rate: params[:start])
-    end
+    if current_user
+      @rate = @hotel.rates.find_by(id: current_user.id)
+      if (params[:start] && !@rate)
+        @rate = Rate.create(user_id: current_user.id,hotel_id: @hotel.id, rate: params[:start])
+      end
 
-    if (params[:start] && @rate)
-      @rate.update_attributes(rate: params[:start])
-    end
+      if (params[:start] && @rate)
+        @rate.update_attributes(rate: params[:start])
+      end
 
-    rate_avg = 0
-    @hotel.rates.to_a.each do |rate|
-      rate_avg += rate.rate
+      @rate_avg = 0.0
+      @hotel.rates.to_a.each do |rate|
+        @rate_avg += rate.rate
+      end
+      @rate_avg = @rate_avg.to_f / @hotel.rates.to_a.size.to_f
+      @hotel.update_attributes(rate_avg: @rate_avg)
     end
-    rate_avg = @rate_avg.to_f / @hotel.rates.to_a.size.to_f
-    @hotel.update_attributes(rate_avg: rate_avg)
   end
 
   def edit; end
