@@ -4,12 +4,12 @@ class HotelsController < ApplicationController
 
   def index
     if params[:term]
-      @hotels = Hotel.search_by_hotel_name(params[:term]).page(params[:page]).per Settings.paginate.hotels
+      @hotels = Hotel.search_by_hotel_name(params[:term]).order(rate_avg: :desc).page(params[:page]).per Settings.paginate.hotels
       @keyword = params[:term]
     elsif params[:commit] == "Filter"
-      @hotels = Hotel.filter_by_service(params).page(params[:page]).per Settings.paginate.hotels
+      @hotels = Hotel.filter_by_service(params).order(rate_avg: :desc).page(params[:page]).per Settings.paginate.hotels
     else
-      @hotels = Hotel.all.page(params[:page]).per Settings.paginate.hotels
+      @hotels = Hotel.all.order(rate_avg: :desc).page(params[:page]).per Settings.paginate.hotels
     end
   end
 
@@ -28,7 +28,9 @@ class HotelsController < ApplicationController
   end
 
   def show
-    @rate = @hotel.rates.find_by(id: current_user.id)
+    if current_user
+      @rate = @hotel.rates.find_by(id: current_user.id)
+    end
     if (params[:start] && !@rate)
       @rate = Rate.create(user_id: current_user.id,hotel_id: @hotel.id, rate: params[:start])
     end
@@ -36,13 +38,15 @@ class HotelsController < ApplicationController
     if (params[:start] && @rate)
       @rate.update_attributes(rate: params[:start])
     end
-
     rate_avg = 0
     @hotel.rates.to_a.each do |rate|
       rate_avg += rate.rate
     end
-    rate_avg = @rate_avg.to_f / @hotel.rates.to_a.size.to_f
+    rate_avg = rate_avg.to_f / @hotel.rates.to_a.size.to_f
+
     @hotel.update_attributes(rate_avg: rate_avg)
+    @hotel.update_attributes(rate_round: rate_avg.round) unless rate_avg.to_f.nan?
+    rate_avg = 0
   end
 
   def edit; end

@@ -2,10 +2,11 @@ Hotel.create!(name: "Bach Khoa Hotel", address: "Khách sạn A25 Bạch Mai",
 phone_number: Faker::PhoneNumber.cell_phone, pool: true, parking: true)
 Hotel.create!(name: "Xã Đàn Hotel", address: "Saigon Sun Hotel Xã Đàn",
 phone_number: Faker::PhoneNumber.cell_phone, pool: true, parking: true)
-20.times do
+20.times do |i|
   Hotel.create!(name: Faker::Restaurant.name, address: Faker::Address.full_address,
 phone_number: Faker::PhoneNumber.cell_phone,
   wifi: [true, false].sample, pool: [true, false].sample, parking: [true, false].sample, breakfast:[true, false].sample)
+  HotelPicture.create!(hotel_id: i+1, remote_picture_url: Faker::Placeholdit.image("300x300", 'jpg', :random, '000', Hotel.find(i+1).name))
 end
 
 99.times do |n|
