@@ -11,12 +11,16 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require bootstrap
 //= require rails-ujs
 //= require turbolinks
 //= require cloudinary
 //= require social-share-button
 //= require_tree .
+//= require jquery.raty
+//= require ratyrate
+
 function handleStar(i) {
   var j,k;
   document.getElementById("star").value = i;
