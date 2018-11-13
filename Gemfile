@@ -25,6 +25,8 @@ gem "cloudinary"
 gem 'carrierwave'
 gem 'social-share-button'
 gem 'figaro'
+gem 'ratyrate', :git => 'git://github.com/dboggs95/rails-5-ratyrate.git', :branch => 'patch-1'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem "byebug"

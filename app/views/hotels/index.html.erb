@@ -60,9 +60,14 @@
                     <h4><%= link_to hotel.name, hotel_path(hotel.id) %></h4>
                     <p><%= hotel.address %></p>
                     <p><%= link_to "詳細を見る", hotel_path(hotel.id) %></p>
+                    <% if hotel.average("quality") %>
                     <div class="rating-block">
-                        <h2 class="bold padding-bottom-7"><%if hotel.rate_avg %><%= hotel.rate_avg.round(2)%><%else%>0<% end %> <small>/ 5</small></h2>
+                      <h4>
+                        レーティング: <span style="color: red;"><bold><%= hotel.average("quality").avg.round(1) %></bold></span>
+                        (<%= hotel.rates("quality").count %> 回)
+                      </h4>
                     </div>
+                    <% end %>
                 </div>
             </div>
         <% end %>
