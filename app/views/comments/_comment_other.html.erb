@@ -3,16 +3,16 @@
   <div class="post-comments">
     <p class="meta"><span id="comment_time<%= comment.id %>">
       <% if (comment.created_at == comment.updated_at) %>
-        <%= comment.created_at %></span>
+        <%= comment.created_at.in_time_zone("Hanoi").strftime("%d/%m/%Y %H:%M") %></span>
       <% else %>
-        <%= t "updated_at" %> <%= comment.updated_at %></span>
+        <%= t "updated_at" %> <%= comment.updated_at.in_time_zone("Hanoi").strftime("%d/%m/%Y %H:%M") %></span>
       <% end %>
       <%= t "by" %> <%= comment.user.name %>
     </p>
     <% if comment.commentable_type == "Hotel" %>
       <i class="pull-right">
         <small><button class="btn-sm btn-success button<%= comment.id %>">
-          <% if user_signed_in? %><%= t "Reply" %><% end %>
+          <% if user_signed_in? %><% end %>
         </button></small>
       </i>
     <% end %>

@@ -8,9 +8,9 @@
   <div class="post-comments">
     <p class="meta"><span id="comment_time<%= comment.id %>">
       <% if (comment.created_at == comment.updated_at) %>
-        <%= comment.created_at %></span>
+        <%= comment.created_at.in_time_zone("Hanoi").strftime("%d/%m/%Y %H:%M") %></span>
       <% else %>
-        <%= t "updated_at" %> <%= comment.updated_at %></span>
+        <%= t "updated_at" %> <%= comment.updated_at.in_time_zone("Hanoi").strftime("%d/%m/%Y %H:%M") %></span>
       <% end %>
       <%= t "by" %> <%= comment.user.name %>
     </p>

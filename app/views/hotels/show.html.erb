@@ -34,20 +34,18 @@
 <div class="row">
     <div class="col-sm-4 well rank-hotel">
         <div class="row">
-			<% if current_user %>
-				<div class="rating-block">
-					<h2 class="bold padding-bottom-7"><% if @rate_avg %><%=@rate_avg%><% else %>0<% end %><small>/ 5</small></h2>
-					<% (1..5).step(1) do |i| %>
-						<% if @rate && i <= @rate.rate %>
-							<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-warning btn-sm",
-								aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-							<% end %>
-						<% else %>
-							<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-default btn-grey btn-sm",
-								aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-								<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-							<% end %>
+			<div class="rating-block">
+				<h2 class="bold padding-bottom-7"><%=@hotel.rate_avg.round(2)%><small>/ 5</small></h2>
+				<% (1..5).step(1) do |i| %>
+					<% if @rate && i <= @rate.rate %>
+						<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-warning btn-sm",
+							aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<% end %>
+					<% else %>
+						<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-default btn-grey btn-sm",
+							aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
+							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 						<% end %>
 					<% end %>
 				</div>
