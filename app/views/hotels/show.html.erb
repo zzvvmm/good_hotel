@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="title-hotel">
-		<h1>ホテル名：<%= @hotel.name %></h1>
+		<h2><%= @hotel.name %></h2>
 	</div>
 </div>
 <div class="row">
@@ -35,21 +35,16 @@
     <div class="col-sm-4 well rank-hotel">
         <div class="row">
 			<div class="rating-block">
-				<h2 class="bold padding-bottom-7"><%=@hotel.rate_avg.round(2)%><small>/ 5</small></h2>
-				<% (1..5).step(1) do |i| %>
-					<% if @rate && i <= @rate.rate %>
-						<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-warning btn-sm",
-							aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<% end %>
-					<% else %>
-						<%= button_to(hotel_path, method: :get, type: "button", class: "btn btn-default btn-grey btn-sm",
-							aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-							<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-						<% end %>
-					<% end %>
-				</div>
-			<% end %>
+        <h3>
+				<%= rating_for @hotel, 'quality', disable_after_rate: false, enable_half: true, cancel: true, cancel_hint: 'このレーティングをレセットします!' %>
+        </h3>
+        <% if @hotel.average("quality") %>
+          <h4>
+            平均: <span style="color: red;"><bold><%= @hotel.average("quality").avg.round(1) %></bold></span>
+            (<%= @hotel.rates("quality").count %> 回)
+          </h4>
+        <% end %>
+			</div>
 		</div>
 		<div class="row">
 			<h4>Rating breakdown</h4>
@@ -123,21 +118,37 @@
     <div class="col-sm-4 well device-hotel">
         <h2>設備やサービス</h2>
         <ul class="list-group">
-        	<li class="list-group-item glyphicon glyphicon-unchecked">
+          <% if @hotel.wifi %>
+        	 <li class="list-group-item glyphicon glyphicon-check">
+          <% else %>
+            <li class="list-group-item glyphicon glyphicon-unchecked">
+          <% end %>
         		<span class="glyphicon glyphicon-signal"> Wifi</span>
         	</li>
-        	<li class="list-group-item glyphicon glyphicon-check">
+        	<% if @hotel.parking %>
+           <li class="list-group-item glyphicon glyphicon-check">
+          <% else %>
+            <li class="list-group-item glyphicon glyphicon-unchecked">
+          <% end %>
         		<span class="glyphicon glyphicon-ruble"> 駐車場</span>
         	</li>
-        	<li class="list-group-item glyphicon glyphicon-unchecked">
+        	<% if @hotel.breakfast %>
+           <li class="list-group-item glyphicon glyphicon-check">
+          <% else %>
+            <li class="list-group-item glyphicon glyphicon-unchecked">
+          <% end %>
         		<span class="glyphicon glyphicon-fire"> 朝ご飯</span>
         	</li>
-        	<li class="list-group-item glyphicon glyphicon-check">
+        	<% if @hotel.pool %>
+           <li class="list-group-item glyphicon glyphicon-check">
+          <% else %>
+            <li class="list-group-item glyphicon glyphicon-unchecked">
+          <% end %>
         		<span class="glyphicon glyphicon-grain"> エアコン</span>
         	</li>
         </ul>
         <div>
-        	<h3>他の情報：</h3>
+        	<h3>他の情報</h3>
         </div>
     </div>
     <div class="col-sm-4 well map-hotel">

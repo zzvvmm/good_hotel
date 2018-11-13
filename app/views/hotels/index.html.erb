@@ -10,7 +10,7 @@
         <div class="row">
             <div>
                 <h2>設備やサービス</h2>
-                <%= form_tag '', method: :get do %>
+                <%= form_tag 'hotels', method: :get do %>
                     <div class="list-group">
                         <p class="list-group-item">
                             <%= check_box_tag 'wifi' %>無料Wi-Fi
@@ -53,16 +53,21 @@
         </div>
         <% @hotels.each do |hotel| %>
             <div class="row well hotel">
-                <div class="col-sm-7 hotel-img">
-                    <%= link_to image_tag("hotel.jpg", alt: "hotel logo")%>
+                <div class="col-md-7 abt-left">
+                    <%= image_tag hotel.hotel_pictures.first.picture.url, alt: hotel.name, class:"img-bn" %>
                 </div>
                 <div class="col-sm-5 hotel-information">
                     <h4><%= link_to hotel.name, hotel_path(hotel.id) %></h4>
                     <p><%= hotel.address %></p>
                     <p><%= link_to "詳細を見る", hotel_path(hotel.id) %></p>
+                    <% if hotel.average("quality") %>
                     <div class="rating-block">
-                        <h2 class="bold padding-bottom-7"><%if hotel.rate_avg %><%= hotel.rate_avg.round(2)%><%else%>0<% end %> <small>/ 5</small></h2>
+                      <h4>
+                        レーティング: <span style="color: red;"><bold><%= hotel.average("quality").avg.round(1) %></bold></span>
+                        (<%= hotel.rates("quality").count %> 回)
+                      </h4>
                     </div>
+                    <% end %>
                 </div>
             </div>
         <% end %>

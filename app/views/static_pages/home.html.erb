@@ -6,44 +6,50 @@
 					<div class="about-tre head-bt">
 					<a href="#"><button class="btn-gt">おすすめのスポット</button></a>
 						<div class="a-1 r-bn">
-							<% top3 = Hotel.order(rate_avg: :desc).first(3) %>
-							<% top3.each do |top| %>
+							<% top3 = Rate.select('rateable_id, avg(stars)').group(:rateable_id).order('avg(stars) desc').first(3) %>
+							<% top3.each do |topr| %>
+								<% top = Hotel.find(topr.rateable_id) %>
 								<div class="col-md-4 abt-left">
-									<% if top.hotel_pictures %>
-										<%= image_tag top.hotel_pictures.first.picture.url, alt:"", class:"img-bn" %>
-									<% else %>
-										<%= image_tag "h4.jpg",alt:"", class:"img-bn" %>
-									<% end %>
-									<h3><%= link_to top.name, hotel_path(top) %></h3>
+									<%= image_tag top.hotel_pictures.first.picture.url, alt: top.name, class:"img-bn" %>
+
 									<div class="rating-block">
-                        <h2 class="bold padding-bottom-7"><%if top.rate_avg %><%= top.rate_avg.round(2)%><%else%>0<% end %> <small>/ 5</small></h2>
-                    </div>
+										<% if top.average("quality") %>
+										<h3><%= link_to top.name, hotel_path(top) %></h3>
+						          <h4>
+						            レーティング: <span style="color: red;"><bold><%= top.average("quality").avg.round(1) %></bold></span>
+						            (<%= top.rates("quality").count %> 回)
+						          </h4>
+						        <% end %>
+						      </div>
                 </div>
-								</div>
-							<% end %>
-							<div class="clearfix"></div>
-						</div>
-					<a href="#"><button class="btn-gt">パーティーにうってつけのスポット</button></a>
-						<div class="a-1 r-bn">
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h4.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">ナゴヤホテル</a></h3>
-
 							</div>
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h5.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">サクラホテフ</a></h3>
-
-							</div>
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h6.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">フジホテル</a></h3>
-
-							</div>
-							<div class="clearfix"></div>
-						</div>
+						<% end %>
+						<div class="clearfix"></div>
 					</div>
-			</div>
+					<br><br>
+					<div class="col-md-12 about-left">
+						<div class="about-tre head-bt">
+							<a href="#"><button class="btn-gt">パーティーにうってつけのスポット</button></a>
+								<div class="a-1 r-bn">
+									<div class="col-md-4 abt-left">
+										<a href="single.html"><%= image_tag "h4.jpg",alt:"", class:"img-bn" %></a>
+										<h3><a href="single.html">ナゴヤホテル</a></h3>
+
+									</div>
+									<div class="col-md-4 abt-left">
+										<a href="single.html"><%= image_tag "h5.jpg",alt:"", class:"img-bn" %></a>
+										<h3><a href="single.html">サクラホテフ</a></h3>
+
+									</div>
+									<div class="col-md-4 abt-left">
+										<a href="single.html"><%= image_tag "h6.jpg",alt:"", class:"img-bn" %></a>
+										<h3><a href="single.html">フジホテル</a></h3>
+
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
 		</div>
 	</div>
 	<!--about-end-->
