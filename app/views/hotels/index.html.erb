@@ -62,19 +62,6 @@
                     <p><%= link_to "詳細を見る", hotel_path(hotel.id) %></p>
                     <div class="rating-block">
                         <h2 class="bold padding-bottom-7"><%if hotel.rate_avg %><%= hotel.rate_avg.round(2)%><%else%>0<% end %> <small>/ 5</small></h2>
-                        <% (1..5).step(1) do |i| %>
-                            <% if @rate && i <= @rate.rate %>
-                                <%= button_to(hotel_path(hotel.id), method: :get, type: "button", class: "btn btn-warning btn-sm",
-                                    aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <% end %>
-                            <% else %>
-                                <%= button_to(hotel_path(hotel.id), method: :get, type: "button", class: "btn btn-default btn-grey btn-sm",
-                                    aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <% end %>
-                            <% end %>
-                        <% end %>
                     </div>
                 </div>
             </div>

@@ -9,23 +9,14 @@
 							<% top3 = Hotel.order(rate_avg: :desc).first(3) %>
 							<% top3.each do |top| %>
 								<div class="col-md-4 abt-left">
-									<%= image_tag top.hotel_pictures.first.picture.url, alt:"", class:"img-bn" %>
+									<% if top.hotel_pictures %>
+										<%= image_tag top.hotel_pictures.first.picture.url, alt:"", class:"img-bn" %>
+									<% else %>
+										<%= image_tag "h4.jpg",alt:"", class:"img-bn" %>
+									<% end %>
 									<h3><%= link_to top.name, hotel_path(top) %></h3>
 									<div class="rating-block">
                         <h2 class="bold padding-bottom-7"><%if top.rate_avg %><%= top.rate_avg.round(2)%><%else%>0<% end %> <small>/ 5</small></h2>
-                        	<% (1..5).step(1) do |i| %>
-                            <% if @rate && i <= @rate.rate %>
-                                <%= button_to(hotel_path(top.id), method: :get, type: "button", class: "btn btn-warning btn-sm",
-                                    aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <% end %>
-                            <% else %>
-                                <%= button_to(hotel_path(top.id), method: :get, type: "button", class: "btn btn-default btn-grey btn-sm",
-                                    aria:{label: "Left Align"}, form: {style: 'display:inline-block;'}, params: {start: i})do %>
-                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                                <% end %>
-                            <% end %>
-                        <% end %>
                     </div>
                 </div>
 								</div>
