@@ -30,7 +30,7 @@ class HotelsController < ApplicationController
   def show
     if current_user && @hotel.average("quality")
       rate_avg = @hotel.average("quality").avg
-      @hotel.update_column(rate_avg: rate_avg)
+      @hotel.update_attributes(rate_avg: rate_avg)
     end
   end
 
