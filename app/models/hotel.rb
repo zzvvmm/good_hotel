@@ -19,7 +19,13 @@ class Hotel < ApplicationRecord
       hotels = hotels.where(service, true)
     end
     if (params.include? "star") && (params[:star].to_i >=1) && (params[:star].to_i <=5)
-      hotels = hotels.where(rate_round: params[:star])
+      hotels.each do |hotel|
+        if hotel.average("quality")
+          rate_avg = hotel.average("quality").avg
+          hotel.update_attributes(rate_avg: rate_avg)
+        end
+      end
+      hotels = hotels.where('rate_avg >= ?', params[:star])
     end
     return hotels
   end

@@ -36,7 +36,7 @@
         <div class="row">
 			<div class="rating-block">
         <h3>
-				<%= rating_for @hotel, 'quality', disable_after_rate: false, enable_half: true, cancel: true, cancel_hint: 'このレーティングをレセットします!' %>
+				<%= rating_for @hotel, 'quality', disable_after_rate: false, cancel: true, cancel_hint: 'このレーティングをレセットします!' %>
         </h3>
         <% if @hotel.average("quality") %>
           <h4>
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 			</div>
-			    <div class="pull-right" style="margin-left:10px;">1</div>
+			    <div class="pull-right" style="margin-left:10px;"><%= @rate5 %></div>
 			</div>
 			<div class="pull-left">
 				<div class="pull-left" style="width:35px; line-height:1;">
@@ -72,7 +72,7 @@
 					    </div>
 				    </div>
 				</div>
-				<div class="pull-right" style="margin-left:10px;">1</div>
+				<div class="pull-right" style="margin-left:10px;"><%= @rate4 %></div>
 			</div>
 			<div class="pull-left">
 					<div class="pull-left" style="width:35px; line-height:1;">
@@ -85,7 +85,7 @@
 						  </div>
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">0</div>
+					<div class="pull-right" style="margin-left:10px;"><%= @rate3 %></div>
 				</div>
 			<div class="pull-left">
 					<div class="pull-left" style="width:35px; line-height:1;">
@@ -98,7 +98,7 @@
 						  </div>
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">0</div>
+					<div class="pull-right" style="margin-left:10px;"><%= @rate2 %></div>
 				</div>
 			<div class="pull-left">
 					<div class="pull-left" style="width:35px; line-height:1;">
@@ -111,7 +111,7 @@
 						  </div>
 						</div>
 					</div>
-					<div class="pull-right" style="margin-left:10px;">0</div>
+					<div class="pull-right" style="margin-left:10px;"><%= @rate1 %></div>
 				</div>
 		  </div>
     </div>
