@@ -10,7 +10,7 @@
 							<% top3.each do |topr| %>
 								<% top = Hotel.find(topr.rateable_id) %>
 								<div class="col-md-4 abt-left">
-									<%= image_tag top.hotel_pictures.first.picture.url, alt:"", class:"img-bn" %>
+									<%= image_tag top.hotel_pictures.first.picture.url, alt: top.name, class:"img-bn" %>
 
 									<div class="rating-block">
 										<% if top.average("quality") %>
@@ -27,27 +27,29 @@
 						<div class="clearfix"></div>
 					</div>
 					<br><br>
-					<a href="#"><button class="btn-gt">パーティーにうってつけのスポット</button></a>
-						<div class="a-1 r-bn">
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h4.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">ナゴヤホテル</a></h3>
+					<div class="col-md-12 about-left">
+						<div class="about-tre head-bt">
+							<a href="#"><button class="btn-gt">パーティーにうってつけのスポット</button></a>
+								<div class="a-1 r-bn">
+									<div class="col-md-4 abt-left">
+										<a href="single.html"><%= image_tag "h4.jpg",alt:"", class:"img-bn" %></a>
+										<h3><a href="single.html">ナゴヤホテル</a></h3>
 
-							</div>
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h5.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">サクラホテフ</a></h3>
+									</div>
+									<div class="col-md-4 abt-left">
+										<a href="single.html"><%= image_tag "h5.jpg",alt:"", class:"img-bn" %></a>
+										<h3><a href="single.html">サクラホテフ</a></h3>
 
-							</div>
-							<div class="col-md-4 abt-left">
-								<a href="single.html"><%= image_tag "h6.jpg",alt:"", class:"img-bn" %></a>
-								<h3><a href="single.html">フジホテル</a></h3>
+									</div>
+									<div class="col-md-4 abt-left">
+										<a href="single.html"><%= image_tag "h6.jpg",alt:"", class:"img-bn" %></a>
+										<h3><a href="single.html">フジホテル</a></h3>
 
+									</div>
+									<div class="clearfix"></div>
+								</div>
 							</div>
-							<div class="clearfix"></div>
 						</div>
-					</div>
-			</div>
 		</div>
 	</div>
 	<!--about-end-->
