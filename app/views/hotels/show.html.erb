@@ -59,12 +59,12 @@
             平均: <span id="avg" style="color: red;"><%= @hotel.average("quality").avg.round(1) %></span>
             (<span id="count"><%= @hotel.rates("quality").count %></span>  回)
             <% if @rated == 0 %>
-              <span id="org" style="color: red; display: none"><%= @hotel.average("quality").avg.round(1) %></span>
+              <span id="org" style="color: red; display: none"><%= @hotel.average("quality").avg %></span>
               <span id="org-count" style="display: none"><%= @hotel.rates("quality").count %></span>
               <span id="oldstar" style="color: red; display: none">0</span>
               <span id="luu" style="display: none">0</span>
             <% else  %>
-              <span id="org" style="color: red; display: none"><%= @oldrate.round(1) %></span>
+              <span id="org" style="color: red; display: none"><%= @oldrate %></span>
               <span id="org-count" style="display: none"><%= @hotel.rates("quality").count - 1 %></span>
               <span id="oldstar" style="color: red; display: none"><%= @oldstar %></span>
 
@@ -77,6 +77,8 @@
             (<span id="count">0</span> 回)
             <span id="org" style="color: red; display: none">0</span>
             <span id="org-count" style="display: none">0</span>
+            <span id="oldstar" style="color: red; display: none">0</span>
+            <span id="luu" style="display: none">0</span>
           </h4>
         <% end %>
 			</div>
