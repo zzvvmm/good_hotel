@@ -36,8 +36,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
-=======
   create_table "average_caches", force: :cascade do |t|
     t.bigint "rater_id"
     t.string "rateable_type"
@@ -51,7 +49,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.index ["rater_id"], name: "index_average_caches_on_rater_id"
   end
 
->>>>>>> Use Ratyrate
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.text "body"
@@ -84,19 +81,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.boolean "breakfast", default: false
     t.boolean "pool", default: false
     t.boolean "parking", default: false
-<<<<<<< HEAD
-    t.decimal "rate_avg", default: "0.0"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "rates", force: :cascade do |t|
-    t.integer "rate", default: 0, null: false
-    t.integer "user_id"
-    t.integer "hotel_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-=======
     t.integer "rate_round", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -116,7 +100,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.bigint "rater_id"
     t.string "rateable_type"
     t.bigint "rateable_id"
-    t.float "stars", null: false
+    t.integer "stars", null: false
     t.string "dimension"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -135,7 +119,6 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.datetime "updated_at", null: false
     t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
     t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
->>>>>>> Use Ratyrate
   end
 
   create_table "users", force: :cascade do |t|

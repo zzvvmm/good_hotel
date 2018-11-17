@@ -36,7 +36,7 @@
         <div class="row">
 			<div class="rating-block">
         <h3>
-				<%= rating_for @hotel, 'quality', disable_after_rate: false, enable_half: true, cancel: true, cancel_hint: 'このレーティングをレセットします!' %>
+				<%= rating_for @hotel, 'quality', disable_after_rate: false, cancel: true, cancel_hint: 'このレーティングをレセットします!' %>
         </h3>
         <% if @hotel.average("quality") %>
           <h4>
