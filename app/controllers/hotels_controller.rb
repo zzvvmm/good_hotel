@@ -28,22 +28,30 @@ class HotelsController < ApplicationController
   end
 
   def show
-    if current_user && @hotel.average("quality")
-      rate_avg = @hotel.average("quality").avg
-      count = @hotel.rates("quality").count
-      @hotel.update_attributes(rate_avg: rate_avg)
+    if @hotel.average("quality")
       @rate1 = @hotel.rates("quality").where(stars: 1).count
       @rate2 = @hotel.rates("quality").where(stars: 2).count
       @rate3 = @hotel.rates("quality").where(stars: 3).count
       @rate4 = @hotel.rates("quality").where(stars: 4).count
       @rate5 = @hotel.rates("quality").where(stars: 5).count
+    else
+      @rate1 = 0
+      @rate2 = 0
+      @rate3 = 0
+      @rate4 = 0
+      @rate5 = 0
+    end
+    if current_user && @hotel.average("quality")
+      rate_avg = @hotel.average("quality").avg
+      count = @hotel.rates("quality").count
+      @hotel.update_attributes(rate_avg: rate_avg)
       @rated = @hotel.rates("quality").where(rateable_id: current_user.id).present? ? 1 : 0
-      star = @hotel.rates("quality").where(rateable_id: current_user.id).first.stars
-      if star
+      @oldstar = @hotel.rates("quality").where(rateable_id: current_user.id).first.stars
+      if @oldstar
         if count == 1
           @oldrate = 0
         else
-          @oldrate = (rate_avg * count - star) / (count - 1)
+          @oldrate = (rate_avg * count - @oldstar) / (count - 1)
         end
       end
     end
