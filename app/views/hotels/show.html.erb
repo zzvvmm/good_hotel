@@ -36,12 +36,26 @@
         <div class="row">
 			<div class="rating-block">
         <h3>
-				<%= rating_for @hotel, 'quality', disable_after_rate: false, cancel: true, cancel_hint: 'このレーティングをレセットします!' %>
+				<%= rating_for @hotel, 'quality', disable_after_rate: false %>
         </h3>
         <% if @hotel.average("quality") %>
-          <h4>
-            平均: <span style="color: red;"><bold><%= @hotel.average("quality").avg.round(1) %></bold></span>
-            (<%= @hotel.rates("quality").count %> 回)
+          <h4 id="heikin">
+            平均: <span id="avg" style="color: red;"><%= @hotel.average("quality").avg.round(1) %></span>
+            (<span id="count"><%= @hotel.rates("quality").count %></span>  回)
+            <% if @rated %>
+              <span id="org" style="color: red; display: none"><%= @oldrate.round(1) %></span>
+              <span id="org-count" style="display: none"><%= @hotel.rates("quality").count - 1 %></span>
+            <% else %>
+              <span id="org" style="color: red; display: none"><%= @hotel.average("quality").avg.round(1) %></span>
+              <span id="org-count" style="display: none"><%= @hotel.rates("quality").count %></span>
+            <% end %>
+          </h4>
+        <% else %>
+          <h4 id="heikin">
+            平均: <span id="avg" style="color: red;">0</span>
+            (<span id="count">0</span> 回)
+            <span id="org" style="color: red; display: none">0</span>
+            <span id="org-count" style="display: none">0</span>
           </h4>
         <% end %>
 			</div>
