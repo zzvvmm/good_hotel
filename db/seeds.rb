@@ -2,6 +2,8 @@ Hotel.create!(name: "Bach Khoa Hotel", address: "Khách sạn A25 Bạch Mai",
 phone_number: Faker::PhoneNumber.cell_phone, pool: true, parking: true)
 Hotel.create!(name: "Xã Đàn Hotel", address: "Saigon Sun Hotel Xã Đàn",
 phone_number: Faker::PhoneNumber.cell_phone, pool: true, parking: true)
+HotelPicture.create!(hotel_id: 21, picture: '000')
+HotelPicture.create!(hotel_id: 22, picture: '000')
 20.times do |i|
   Hotel.create!(name: Faker::Restaurant.name, address: Faker::Address.full_address,
 phone_number: Faker::PhoneNumber.cell_phone,
