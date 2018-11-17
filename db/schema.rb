@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.boolean "breakfast", default: false
     t.boolean "pool", default: false
     t.boolean "parking", default: false
-    t.integer "rate_round", default: 0
+    t.float "rate_avg", default: 0.0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

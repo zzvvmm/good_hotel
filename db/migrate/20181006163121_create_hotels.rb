@@ -8,7 +8,7 @@ class CreateHotels < ActiveRecord::Migration[5.2]
       t.boolean :breakfast, default: false
       t.boolean :pool, default: false
       t.boolean :parking, default: false
-      t.integer :rate_round, default: 0
+      t.float :rate_avg, default: 0
 
       t.timestamps
     end
