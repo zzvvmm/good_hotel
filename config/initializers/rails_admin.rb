@@ -25,11 +25,14 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   config.model Hotel do
-    list do
-      exclude_fields :rate_avg
-      exclude_fields :comments
-      exclude_fields :rates
-      exclude_fields :hotel_pictures
+    edit do
+      fields :name, :address, :phone_number, :wifi, :breakfast, :pool, :parking
+    end
+  end
+
+  config.model Admin do
+    edit do
+      fields :email, :password, :password_confirmation
     end
   end
 

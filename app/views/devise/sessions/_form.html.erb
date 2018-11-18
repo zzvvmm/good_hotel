@@ -24,4 +24,10 @@
   </div>
 <% end %>
 <br>
+<% if current_page?(new_admin_session_path) %>
+  <%= link_to "ユーザーページ", new_user_session_path%>
+<% else %>
+  <%= link_to "管理者ページ",  new_admin_session_path%>
+<% end %>
+<br>
 <%= render "devise/shared/links" %>

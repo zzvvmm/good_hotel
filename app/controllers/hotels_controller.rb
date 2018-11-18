@@ -34,6 +34,12 @@ class HotelsController < ApplicationController
       @rate3 = @hotel.rates("quality").where(stars: 3).count
       @rate4 = @hotel.rates("quality").where(stars: 4).count
       @rate5 = @hotel.rates("quality").where(stars: 5).count
+    else
+      @rate1 = 0
+      @rate2 = 0
+      @rate3 = 0
+      @rate4 = 0
+      @rate5 = 0
     end
     if current_user && @hotel.average("quality")
       rate_avg = @hotel.average("quality").avg
@@ -50,6 +56,7 @@ class HotelsController < ApplicationController
       end
     end
     @comments = @hotel.comments.order(:created_at).page(params[:page]).per(5)
+    @pictures = @hotel.hotel_pictures
   end
 
   def edit; end
