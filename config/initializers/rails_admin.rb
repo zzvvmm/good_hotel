@@ -1,4 +1,5 @@
 RailsAdmin.config do |config|
+  config.parent_controller = '::ApplicationController'
 
   ### Popular gems integration
 
@@ -24,28 +25,37 @@ RailsAdmin.config do |config|
   # config.show_gravatar = true
 
   config.model Hotel do
+    list do
       exclude_fields :rate_avg
       exclude_fields :comments
       exclude_fields :rates
       exclude_fields :hotel_pictures
+    end
   end
 
   config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
+    dashboard do
+      only ["Admin","Hotel","User","Comment"]
+    end
+    index do
+      only ["Admin","Hotel","User","Comment"]
+    end
     new do
       only ["Admin","Hotel"]
     end
-    export
     bulk_delete
-    show
+    show do
+      only ["Admin","Hotel","User","Comment"]
+    end
     edit do
       only ["Hotel"]
     end
     delete do
       except ["Admin"]
     end
-    show_in_app
+    show_in_app do
+      only ["Admin","Hotel","User","Comment"]
+    end
 
     ## With an audit adapter, you can add:
     # history_index

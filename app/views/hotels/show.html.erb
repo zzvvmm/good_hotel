@@ -181,11 +181,11 @@
                     <%= form_for :comment,
                       url: hotel_comments_path(:hotel_id => @hotel.id),
                       :html => {:class => "form-inline"}, remote: true do |f| %>
-                      <%= f.text_area :body, placeholder: "Add a comment",
+                      <%= f.text_area :body, placeholder: "コメントを追加する",
                         class: "box-clear" %><br/>
                       <%= f.hidden_field :user_id, value: current_user.id, id: "user_hotel" %>
                       <%= f.hidden_field :hotel_id, value: @hotel.id %>
-                      <%= f.submit "Add Comment",
+                      <%= f.submit "コメント追加",
                         class: "btn btn-primary pull-right", data: {send: "hotel"} %>
                     <% end %>
                   </div>
@@ -201,10 +201,11 @@
                 <ul class="comments" id="comments_hotel">
                   <li class="clearfix">
                     <p>
-                      <%= render @hotel.comments.order(:created_at) %>
+                      <%= render @comments %>
                     </p>
                   </li>
                 </ul>
+								<%= paginate @comments, :theme => "twitter-bootstrap-3"%>
                 </div>
             </div>
         </div>

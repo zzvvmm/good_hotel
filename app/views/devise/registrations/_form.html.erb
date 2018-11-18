@@ -3,18 +3,16 @@
   <%= devise_error_messages! %>
 
   <%= f.label :name, "名前" %>
-  <%= f.text_field :name, class: "form-control"  %>
+  <%= f.text_field :name, class: "form-control resize"  %>
 
   <%= f.label :email, "メールアドレス" %>
-  <%= f.email_field :email, class: "form-control" %>
+  <%= f.email_field :email, class: "form-control resize" %>
 
-  <% unless resource %>
-    <%= f.label :password, "パスワード" %>
-    <%= f.password_field :password, class: "form-control" %>
+  <%= f.label :password, "パスワード" %>
+  <%= f.password_field :password, class: "form-control resize" %>
 
-    <%= f.label :password_confirmation, "パスワード確認" %>
-    <%= f.password_field :password_confirmation, class: "form-control" %>
-  <% end %>
+  <%= f.label :password_confirmation, "パスワード確認" %>
+  <%= f.password_field :password_confirmation, class: "form-control resize" %>
   <br>
   <%= f.hidden_field(:avatar_cache) %>
   <%= image_tag(resource.avatar_url, size: "150x150") if resource.avatar? %>

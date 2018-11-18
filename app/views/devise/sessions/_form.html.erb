@@ -3,13 +3,13 @@
   <div class="field">
     <%= f.label :email, "名前" %><br />
     <%= f.email_field :email, autofocus: true,
-      autocomplete: "email", class: "form-control" %>
+      autocomplete: "email", class: "form-control resize" %>
   </div>
 
   <div class="field">
     <%= f.label :password, "パスワード" %><br />
     <%= f.password_field :password, autocomplete: "off",
-      class: "form-control" %>
+      class: "form-control resize" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>

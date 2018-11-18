@@ -37,6 +37,7 @@ class HotelsController < ApplicationController
       @rate4 = @hotel.rates("quality").where(stars: 4).count
       @rate5 = @hotel.rates("quality").where(stars: 5).count
     end
+    @comments = @hotel.comments.order(:created_at).page(params[:page]).per(5)
   end
 
   def edit; end

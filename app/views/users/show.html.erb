@@ -8,9 +8,9 @@
        <div class="row " style="padding-bottom:50px; ">
            <div class="col-md-3">
                <% if @user.avatar? %>
-                <%= image_tag(@user.avatar_url, class: "img-responsive img-thumbnail") %>
+                <%= image_tag(@user.avatar_url, class: "img-responsive img-thumbnail", size: "180x150") %>
               <% else %>
-                <%= image_tag("user", class: "img-responsive img-thumbnail") %>
+                <%= image_tag("user", class: "img-responsive img-thumbnail", size: "180x150") %>
               <% end %>
            </div>
            <div class="col-md-9">
@@ -31,44 +31,16 @@
              <% end %>
                <br /><br />
                <hr />
-               <div >
+               <div class="d-flex p-2">
                 <h3><strong> 名前: </strong><%= @user.name%></h3>
 
                  <h3> <strong> メール: </strong><%= @user.email %></h3>
                 <h3>  <strong> 役割: </strong><%= @user.role == 1 ? "ユーザー" : "管理者" %></h3>
 
-                <h3>  <strong> ソーシャルリンク :</strong></h3>
-                   <br />
-                   <a href="#" class="btn btn-primary" >Facebook <i class="glyphicon glyphicon-play"></i></a>
-                   <a href="#" class="btn btn-danger" >Google <i class="glyphicon glyphicon-play"></i></a>
-                   <a href="#" class="btn btn-info" >Twitter <i class="glyphicon glyphicon-play"></i></a>
-               </div>
+                </div>
 
            </div>
        </div>
-       <div class="row " >
-           <div class="col-md-6">
-             <h3>Small Biography :</h3>
-               <hr />
-               <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                   Mauris ac nisl tempus, sollicitudin elit vel, pellentesque lorem.
-                   Maecenas hendrerit laoreet lectus a feugiat. Nunc sodales id ipsum ut maximus.
-                   Morbi pellentesque quis diam nec ullamcorper. Nulla facilisi. Donec non nunc augue.
-                   Integer tincidunt consequat porta.
-               </p>
-
-           </div>
-           <div class="col-md-6" style="padding-bottom:80px;">
-              <h3>Registered Address  :</h3>
-               <hr />
-               <h5>568/90 - New Lane Street </h5>
-
-                 <h5>Free Way Society</h5>
-                <h5>  United States - 2098-89-00</h5>
-           </div>
-       </div>
-
    </div>
 </body>
 </html>

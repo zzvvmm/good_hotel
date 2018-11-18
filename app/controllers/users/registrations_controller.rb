@@ -15,7 +15,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
      devise_parameter_sanitizer.permit :sign_up, keys: [:name, :email,
        :password, :password_confirmation, :avatar, :avatar_cache]
        devise_parameter_sanitizer.permit :account_update, keys: [:name, :email,
-          :avatar, :avatar_cache]
+        :password, :password_confirmation, :avatar, :avatar_cache]
   end
   def update_resource(resource, params)
     resource.update_without_password(params)
