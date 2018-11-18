@@ -46,6 +46,22 @@ function initstars(){
         avg = (org * org_count + score) / (org_count + 1)
         $('#avg').html(avg);
         $('#count').html(org_count + 1);
+        alert($(luu).html())
+        $('#count').html(org_count + 1);
+
+        if ($('#oldstar').html()) {
+          if (parseInt($('#luu').html()) != 0)
+            oldstar = parseInt($('#luu').html())
+          else
+            oldstar = parseInt($('#oldstar').html())
+        }
+        idname = '#rate' + score
+
+        oldid = '#rate' + oldstar
+
+        $(idname).html(parseInt($(idname).html()) + 1)
+        $(oldid).html(parseInt($(oldid).html()) - 1)
+        $(luu).html(score)
         var _this = this;
         if (score == null) { score = 0; }
         $(this).trigger('rated', score)
