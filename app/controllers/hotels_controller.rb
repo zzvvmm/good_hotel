@@ -39,6 +39,7 @@ class HotelsController < ApplicationController
       rate_avg = @hotel.average("quality").avg
       count = @hotel.rates("quality").count
       @hotel.update_attributes(rate_avg: rate_avg)
+      @rated = @hotel.rates("quality").where(rateable_id: current_user.id).present? ? 1 : 0
       @oldstar = @hotel.rates("quality").where(rateable_id: current_user.id).first.stars
       if @oldstar
         if count == 1
