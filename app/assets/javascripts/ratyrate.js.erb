@@ -39,6 +39,13 @@ function initstars(){
       targetScoret: $(this).attr('data-target-score'),
       readOnly: $readonly,
       click: function(score, evt) {
+        avg = parseInt($('#avg').html())
+        count = parseInt($('#count').html())
+        org_count = parseInt($('#org-count').html())
+        org = parseInt($('#org').html())
+        avg = (org * org_count + score) / (org_count + 1)
+        $('#avg').html(avg);
+        $('#count').html(org_count + 1);
         var _this = this;
         if (score == null) { score = 0; }
         $(this).trigger('rated', score)
