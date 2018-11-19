@@ -24,9 +24,18 @@ RailsAdmin.config do |config|
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar = true
 
+  config.model HotelPicture do
+    edit do
+      field :picture, :multiple_carrierwave
+    end
+  end
+
   config.model Hotel do
     edit do
-      fields :name, :address, :phone_number, :wifi, :breakfast, :pool, :parking
+      fields :name, :address, :phone_number, :wifi, :breakfast, :pool, :parking, :hotel_pictures
+    end
+    nested do
+      field :hotel_pictures
     end
   end
 

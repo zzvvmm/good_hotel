@@ -21,10 +21,12 @@
         <% end %>
       </div>
 
-      <% if !user_signed_in? %>
+      <% if !user_signed_in?%>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-				<li><%= link_to "サインアップ", new_user_registration_path %></li>
+        <%if !current_admin %>
+          <li><%= link_to "ログイン", new_user_session_path %></li>
+  				<li><%= link_to "サインアップ", new_user_registration_path %></li>
+        <%end%>
       </ul>
 			<% else %>
       <div class="btn-group pull-right" style="margin-top: 5px;">

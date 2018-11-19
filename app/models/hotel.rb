@@ -4,6 +4,8 @@ class Hotel < ApplicationRecord
     using: {tsearch: {dictionary: 'english', prefix: true, any_word: true}}
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :hotel_pictures
+  accepts_nested_attributes_for :hotel_pictures
+  attr_accessor :hotel_pictures_cache, :remove_hotel_pictures
   ratyrate_rateable "quality"
   has_many :rating_averages, class_name: :RatingCache, foreign_key: :cacheable_id do
     def with_dimension(dimension)
