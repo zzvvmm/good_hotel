@@ -58,7 +58,7 @@ function initstars(){
         oldid = '#rate' + oldstar
         $(idname).html(parseInt($(idname).html()) + 1)
         $(oldid).html(parseInt($(oldid).html()) - 1)
-        $(luu).html(score)
+        $('#luu').html(score)
         var _this = this;
         if (score == null) { score = 0; }
         $(this).trigger('rated', score)

@@ -26,7 +26,7 @@ RailsAdmin.config do |config|
 
   config.model HotelPicture do
     edit do
-      field :picture, :multiple_carrierwave
+      field :picture, :carrierwave
     end
   end
 
