@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   resources :hotel_reviews
 
+  resources :reports, only: [:new, :create]
+
   resources :hotels do
     resources :comments
   end

@@ -30,10 +30,20 @@
             <small><button class="btn-sm btn-success button<%= comment.id %>">
               <% if user_signed_in? %>返信<% end %>
             </button></small>
-            <small><button class="btn-sm btn-success button<%= comment.id %>">
-              <% if user_signed_in? %>報告<% end %>
-            </button></small>
+            <small>
+              <%= link_to  new_report_path(comment: comment.id), remote: true do %>
+                <button class="btn-sm btn-danger button">報告
+                </button>
+              <% end %>
+            </small>
           </i>
+          <div id="modal-window" class="modal fade" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+              </div>
+            </div>
+          </div>
         <% end %>
         <p id="comment_body<%= comment.id %>">
           <%= comment.body %>
