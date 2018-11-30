@@ -34,7 +34,7 @@
                         <% end %>
                         <%= text_field_tag "star", nil, maxlength: 1, class: "dhidden" %>
                     </div>
-                    <%= submit_tag "Filter", class: "btn btn-primary" %>
+                    <%= submit_tag "フィルター", class: "btn btn-primary" %>
                 <% end %>
             </div>
         </div>
@@ -42,7 +42,7 @@
     <div class="col-sm-8 info" >
         <div class="row">
             <ul class="pager">
-                <%= paginate @hotels, :theme => 'twitter-bootstrap', params: { star: params[:star], commit: 'Filter' } %>
+                <%= paginate @hotels, params: { star: params[:star], commit: 'Filter' } %>
             </ul>
         </div>
         <% @hotels.each do |hotel| %>
@@ -54,20 +54,26 @@
                     <h4><%= link_to hotel.name, hotel_path(hotel.id) %></h4>
                     <p><%= hotel.address %></p>
                     <p><%= link_to "詳細を見る", hotel_path(hotel.id) %></p>
-                    <% if hotel.average("quality") %>
                     <div class="rating-block">
-                      <h4>
-                        レーティング: <span style="color: red;"><bold><%= hotel.average("quality").avg.round(1) %></bold></span>
-                        (<%= hotel.rates("quality").count %> 回)
-                      </h4>
+                      <% if hotel.average("quality") %>
+                      <% for i in 1..5 do %>
+                        <% if i > hotel.average("quality").avg.round(0)%>
+                          <%= image_tag "star-off", class: "show-rate"%>
+                        <% else %>
+                          <%= image_tag "star-on", class: "show-rate"%>
+                        <% end %>
+                      <% end %>
+                        <h4>
+                          レート人数：<%= hotel.rates("quality").count %>
+                        </h4>
+                      <% end %>
                     </div>
-                    <% end %>
                 </div>
             </div>
         <% end %>
         <div class="row">
             <ul class="pager">
-                <%= paginate @hotels, :theme => 'twitter-bootstrap', params: { star: params[:star], commit: 'Filter' } %>
+                <%= paginate @hotels, params: { star: params[:star], commit: 'Filter' } %>
             </ul>
         </div>
     </div>

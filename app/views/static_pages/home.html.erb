@@ -15,9 +15,15 @@
 									<div class="rating-block">
 										<% if top.average("quality") %>
 										<h3><%= link_to top.name, hotel_path(top) %></h3>
+										<% for i in 1..5 do %>
+											<% if i > top.average("quality").avg.round(0)%>
+												<%= image_tag "star-off", class: "show-rate"%>
+											<% else %>
+												<%= image_tag "star-on", class: "show-rate"%>
+											<% end %>
+										<% end %>
 						          <h4>
-						            レーティング: <span style="color: red;"><bold><%= top.average("quality").avg.round(1) %></bold></span>
-						            (<%= top.rates("quality").count %> 回)
+						            レート人数：<%= top.rates("quality").count %> 
 						          </h4>
 						        <% end %>
 						      </div>

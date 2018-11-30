@@ -30,6 +30,9 @@
             <small><button class="btn-sm btn-success button<%= comment.id %>">
               <% if user_signed_in? %>返信<% end %>
             </button></small>
+            <small><button class="btn-sm btn-success button<%= comment.id %>">
+              <% if user_signed_in? %>報告<% end %>
+            </button></small>
           </i>
         <% end %>
         <p id="comment_body<%= comment.id %>">
