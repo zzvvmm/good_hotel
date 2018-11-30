@@ -14,12 +14,15 @@ Rails.application.routes.draw do
 
   resources :hotel_reviews
 
+  resources :reports, only: [:new, :create]
+
   resources :hotels do
     resources :comments
   end
   resources :comments do
     resources :comments
   end
+  notify_to :users
   resources :users, only: [:show, :index]
   resources :personal_messages, only: [:new, :create]
   resources :conversations, only: [:index, :show]

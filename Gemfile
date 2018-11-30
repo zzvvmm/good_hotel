@@ -27,6 +27,7 @@ gem 'social-share-button'
 gem 'turbolinks', '~> 5'
 gem 'twitter-bootstrap-rails', :group => :assets
 gem 'uglifier', '>= 1.3.0'
+gem 'activity_notification'
 
 group :development, :test do
   gem 'byebug'

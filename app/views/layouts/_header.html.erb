@@ -29,6 +29,7 @@
         <%end%>
       </ul>
 			<% else %>
+      <%= render_notifications_of current_user, fallback: 'default' %>
       <div class="btn-group pull-right" style="margin-top: 5px;">
         <%= link_to current_user.name, current_user, class: "btn btn-success" %>
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
