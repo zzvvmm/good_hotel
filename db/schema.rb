@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_094751) do
+ActiveRecord::Schema.define(version: 2018_12_03_170026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_094751) do
   create_table "conversations", id: :serial, force: :cascade do |t|
     t.integer "author_id"
     t.integer "receiver_id"
+    t.integer "hotel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true
@@ -213,6 +214,7 @@ ActiveRecord::Schema.define(version: 2018_11_30_094751) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
