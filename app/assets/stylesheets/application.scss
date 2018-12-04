@@ -15,6 +15,7 @@
    *= require social-share-button
    */
 @import "bootstrap";
+@import "bootstrap-sprockets";
 
 .social-share-button .ssb-icon {
     background-size: 30px 30px !important;
@@ -25,3 +26,49 @@
   .resize {
     width: 60% !important;
   }
+
+#notification {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  width: 300px;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: #fff;
+  .close {cursor: pointer}
+}
+
+.online_status {
+  color: red;
+  transition: color 1s ease;
+  &.online {
+    color: green;
+  }
+}
+.chat1-icon {
+  height: 70px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+}
+
+.show-rate{
+  width: 20px!important;
+  height: 20px!important;
+}
+
+.bell {
+  position: absolute;
+  width: 50px!important;
+  height: 50px!important;
+}
+
+.notification_count {
+  position: relative;
+  left: 30px;
+  text-decoration-color: black;
+  z-index: 1;
+}
+
+.notification_wrapper .dropdown_notification .notification_count span {
+  color: #333!important;
+}

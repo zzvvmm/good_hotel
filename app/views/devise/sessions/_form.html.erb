@@ -27,7 +27,11 @@
 <% if current_page?(new_admin_session_path) %>
   <%= link_to "ユーザーページ", new_user_session_path%>
 <% else %>
-  <%= link_to "管理者ページ",  new_admin_session_path%>
+  <% if current_admin %>
+    <%= link_to "管理者ページ",  rails_admin_path%>
+  <% else %>
+    <%= link_to "管理者ページ",  new_admin_session_path%>
+  <% end %>
 <% end %>
 <br>
 <%= render "devise/shared/links" %>

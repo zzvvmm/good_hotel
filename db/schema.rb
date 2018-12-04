@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_022554) do
+ActiveRecord::Schema.define(version: 2018_12_03_170026) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,17 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "conversations", id: :serial, force: :cascade do |t|
+    t.integer "author_id"
+    t.integer "receiver_id"
+    t.integer "hotel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id", "receiver_id"], name: "index_conversations_on_author_id_and_receiver_id", unique: true
+    t.index ["author_id"], name: "index_conversations_on_author_id"
+    t.index ["receiver_id"], name: "index_conversations_on_receiver_id"
+  end
+
   create_table "hotel_pictures", force: :cascade do |t|
     t.integer "hotel_id"
     t.string "picture"
@@ -86,6 +97,28 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "notifications", force: :cascade do |t|
+    t.string "target_type", null: false
+    t.bigint "target_id", null: false
+    t.string "notifiable_type", null: false
+    t.bigint "notifiable_id", null: false
+    t.string "key", null: false
+    t.string "group_type"
+    t.bigint "group_id"
+    t.integer "group_owner_id"
+    t.string "notifier_type"
+    t.bigint "notifier_id"
+    t.text "parameters"
+    t.datetime "opened_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_owner_id"], name: "index_notifications_on_group_owner_id"
+    t.index ["group_type", "group_id"], name: "index_notifications_on_group_type_and_group_id"
+    t.index ["notifiable_type", "notifiable_id"], name: "index_notifications_on_notifiable_type_and_notifiable_id"
+    t.index ["notifier_type", "notifier_id"], name: "index_notifications_on_notifier_type_and_notifier_id"
+    t.index ["target_type", "target_id"], name: "index_notifications_on_target_type_and_target_id"
+  end
+
   create_table "overall_averages", force: :cascade do |t|
     t.string "rateable_type"
     t.bigint "rateable_id"
@@ -94,6 +127,16 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.datetime "updated_at", null: false
     t.index ["rateable_id", "rateable_type"], name: "index_overall_averages_on_rateable_id_and_rateable_type"
     t.index ["rateable_type", "rateable_id"], name: "index_overall_averages_on_rateable_type_and_rateable_id"
+  end
+
+  create_table "personal_messages", id: :serial, force: :cascade do |t|
+    t.text "body"
+    t.integer "conversation_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_personal_messages_on_conversation_id"
+    t.index ["user_id"], name: "index_personal_messages_on_user_id"
   end
 
   create_table "rates", force: :cascade do |t|
@@ -121,6 +164,32 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
   end
 
+  create_table "reports", force: :cascade do |t|
+    t.integer "comment_id"
+    t.integer "user_id"
+    t.string "reason"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "target_type", null: false
+    t.bigint "target_id", null: false
+    t.string "key", null: false
+    t.boolean "subscribing", default: true, null: false
+    t.boolean "subscribing_to_email", default: true, null: false
+    t.datetime "subscribed_at"
+    t.datetime "unsubscribed_at"
+    t.datetime "subscribed_to_email_at"
+    t.datetime "unsubscribed_to_email_at"
+    t.text "optional_targets"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "index_subscriptions_on_key"
+    t.index ["target_type", "target_id", "key"], name: "index_subscriptions_on_target_type_and_target_id_and_key", unique: true
+    t.index ["target_type", "target_id"], name: "index_subscriptions_on_target_type_and_target_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "picture"
@@ -145,10 +214,13 @@ ActiveRecord::Schema.define(version: 2018_11_13_022554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "avatar"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "personal_messages", "conversations"
+  add_foreign_key "personal_messages", "users"
 end

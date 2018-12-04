@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   post '/rate' => 'rater#create', :as => 'rate'
-  devise_for :admins
+  devise_for :admins, controllers: {
+        sessions: "admins/sessions"
+            }
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount ActionCable.server => '/cable'
 
@@ -10,9 +12,9 @@ Rails.application.routes.draw do
         sessions: "users/sessions"
             }
 
-  resources :users, only: :show
-
   resources :hotel_reviews
+
+  resources :reports, only: [:new, :create]
 
   resources :hotels do
     resources :comments
@@ -20,5 +22,9 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments
   end
-
+  notify_to :users
+  resources :users, only: [:show, :index]
+  resources :personal_messages, only: [:new, :create]
+  resources :conversations, only: [:index, :show]
+  mount ActionCable.server => '/cable'
 end
