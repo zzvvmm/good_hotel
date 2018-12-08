@@ -26,11 +26,6 @@
   .resize {
     width: 60% !important;
   }
-#conversation-body {
-  max-height: 400px;
-  overflow-y: auto;
-  margin-bottom: 2em;
-}
 
 #notification {
   position: fixed;
@@ -59,4 +54,21 @@
 .show-rate{
   width: 20px!important;
   height: 20px!important;
+}
+
+.bell {
+  position: absolute;
+  width: 50px!important;
+  height: 50px!important;
+}
+
+.notification_count {
+  position: relative;
+  left: 30px;
+  text-decoration-color: black;
+  z-index: 1;
+}
+
+.notification_wrapper .dropdown_notification .notification_count span {
+  color: #333!important;
 }

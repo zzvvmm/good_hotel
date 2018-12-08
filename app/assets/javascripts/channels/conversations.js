@@ -1,19 +1,25 @@
 (function() {
   jQuery(document).on('turbolinks:load', function() {
     var messages, messages_to_bottom;
+    var cru = parseInt($("#current_user_id").val());
     messages_to_bottom = function() {
-      return messages.scrollTop(messages.prop("scrollHeight"));
+      return $('#conversation-main').scrollTop($('#conversation-main').prop("scrollHeight"));
     };
     messages = $('#conversation-body');
     if ($('#current-user').size() > 0) {
-      a = App.cable.subscriptions.create({
+      App.personal_chat = App.cable.subscriptions.create({
         channel: "NotificationsChannel"
       }, {
         connected: function() {},
         disconnected: function() {},
         received: function(data) {
           if (messages.size() > 0 && messages.data('conversation-id') === data['conversation_id']) {
-            messages.append(data['message']);
+            if (data['user_id']==cru) {
+              messages.append(data['message']);
+            }
+            else {
+              messages.append(data['message2']);
+            }
             return messages_to_bottom();
           } else {
             if ($('#conversations').size() > 0) {
@@ -42,7 +48,7 @@
         $this = $(this);
         textarea = $this.find('#personal_message_body');
         if ($.trim(textarea.val()).length > 1) {
-          a.send_message(textarea.val(), $this.find('#conversation_id').val());
+          App.personal_chat.send_message(textarea.val(), $this.find('#conversation_id').val());
           textarea.val('');
         }
         e.preventDefault();

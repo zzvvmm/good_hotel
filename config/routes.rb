@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :comments do
     resources :comments
   end
+  notify_to :users
   resources :users, only: [:show, :index]
   resources :personal_messages, only: [:new, :create]
   resources :conversations, only: [:index, :show]
