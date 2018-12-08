@@ -2408,7 +2408,6 @@ ul.blog-ic {
     border-image: none;
     border-style: solid;
     border-width: medium;
-    content: " ";
     height: 0;
     pointer-events: none;
     position: absolute;
@@ -2416,6 +2415,7 @@ ul.blog-ic {
     top: 15px;
     width: 0;
 }
+
 .direct-chat-text::after {
     border-width: 5px;
     margin-top: -5px;

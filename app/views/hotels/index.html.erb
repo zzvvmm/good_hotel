@@ -84,7 +84,7 @@
             <h2 class="text-center"><span>Hotels whose adress likes</span><span style="color: green"> "<%= @keyword %>"</span></h2>
             <div class="row">
                 <ul class="pager">
-                    <%= paginate @hotels2, :theme => 'twitter-bootstrap', params: { star: params[:star], commit: 'フィルタ' } %>
+                    <%= paginate @hotels2, :theme => 'twitter-bootstrap', params: { star: params[:star], commit: 'フィルター' } %>
                 </ul>
             </div>
             <% @hotels2.each do |hotel| %>
