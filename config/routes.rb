@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'reports/index'
   post '/rate' => 'rater#create', :as => 'rate'
   devise_for :admins, controllers: {
         sessions: "admins/sessions"
@@ -15,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :hotel_reviews
 
-  resources :reports, only: [:new, :create]
+  resources :reports, only: [:new, :create, :index, :destroy]
 
   resources :hotels do
     resources :comments
