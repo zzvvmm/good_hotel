@@ -58,15 +58,28 @@
 
 .bell {
   position: absolute;
-  width: 50px!important;
-  height: 50px!important;
+  right: 50px;
+  top: 10px;
+  width: 30px!important;
+  height: 30px!important;
 }
 
 .notification_count {
   position: relative;
-  left: 30px;
+  top: 10px;
+  right: 60px;
+  width: 70%!important;
+  height: 70%!important;
   text-decoration-color: black;
   z-index: 1;
+}
+
+.mess-icon {
+  position: absolute;
+  width: 30px!important;
+  height: 30px!important;
+  right: 30px;
+  top: 10px;
 }
 
 .notification_wrapper .dropdown_notification .notification_count span {

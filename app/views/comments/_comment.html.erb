@@ -29,12 +29,14 @@
             <small><button class="btn-sm btn-success button<%= comment.id %>">
               <% if user_signed_in? %>返信<% end %>
             </button></small>
+            <%if comment.user != current_user%>
             <small>
               <%= link_to  new_report_path(comment: comment.id), remote: true do %>
                 <button class="btn-sm btn-danger button">報告
                 </button>
               <% end %>
             </small>
+            <% end %>
           </i>
           <div id="modal-window" class="modal fade" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true">

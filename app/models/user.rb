@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :received_conversations, class_name: 'Conversation', foreign_key: 'receiver_id'
 
   has_many :personal_messages, dependent: :destroy
-  has_many :reports
+  has_many :reports, dependent: :destroy
   acts_as_target
   has_many :comments, dependent: :destroy
 

@@ -17,6 +17,10 @@ class ReportsController < ApplicationController
     redirect_to request.referrer
   end
 
+  def index
+    @reports = Report.all
+  end
+
   private
     def report_params
       params.require(:report).permit :user_id, :reason, :comment_id

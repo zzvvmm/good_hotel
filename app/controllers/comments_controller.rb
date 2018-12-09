@@ -59,7 +59,8 @@ class CommentsController < ApplicationController
   end
 
   def correct_user
-    @comment = current_user.comments.find_by id: params[:id]
-    redirect_to hotels_url unless @comment
+    unless current_user.id == @comment.user.id || current_user.id == 1
+      redirect_to hotels_url
+    end
   end
 end

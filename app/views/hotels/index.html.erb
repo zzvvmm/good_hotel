@@ -33,11 +33,11 @@
         </div>
     </div>
     <% if @keyword && @hotels.present? %>
-        <h2 class="text-center"><span>Hotels whose name likes</span><span style="color: green"> "<%= @keyword %>"</span></h2>
+        <h2 class="text-center"><span>名前で検索する結果</span><span style="color: green"> "<%= @keyword %>"</span></h2>
     <% end %>
     <div class="col-sm-8 info" >
         <% if @keyword && @hotels.blank? && @hotels2.blank? %>
-            <h2 class="text-center"><span>No result for </span><span style="color: green"> "<%= @keyword %>"</span></h2>
+            <h2 class="text-center"><span>結果がない </span><span style="color: green"> "<%= @keyword %>"</span></h2>
         <% end %>
         <div class="row">
             <ul class="pager">
@@ -81,7 +81,7 @@
     <% if @keyword && @hotels2.present? %>
 
         <div class="col-sm-8 info" >
-            <h2 class="text-center"><span>Hotels whose adress likes</span><span style="color: green"> "<%= @keyword %>"</span></h2>
+            <h2 class="text-center"><span>住所で検索する結果</span><span style="color: green"> "<%= @keyword %>"</span></h2>
             <div class="row">
                 <ul class="pager">
                     <%= paginate @hotels2, params: { star: params[:star], commit: 'フィルター' } %>

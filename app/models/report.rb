@@ -14,6 +14,6 @@ class Report < ApplicationRecord
     notifiable_path: :custom_notifiable_path
 
   def custom_notifiable_path
-    root_path
+    reports_index_path
   end
 end

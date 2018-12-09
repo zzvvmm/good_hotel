@@ -22,8 +22,9 @@
 												<%= image_tag "star-on", class: "show-rate"%>
 											<% end %>
 										<% end %>
+										(<%= top.average("quality").avg.round(0)%>)
 						          <h4>
-						            レート人数：<%= top.rates("quality").count %> 
+						            レート人数：<%= top.rates("quality").count %>
 						          </h4>
 						        <% end %>
 						      </div>

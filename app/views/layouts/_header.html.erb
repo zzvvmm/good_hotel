@@ -29,10 +29,6 @@
         <%end%>
       </ul>
 			<% else %>
-        <% if current_user.admin? %>
-        <%= render_notifications_of current_user, fallback: 'default'%>
-          <%= image_tag "bell", class: "bell"%>
-        <% end %>
         <div class="navbar-right btn-group" style="margin-top: 5px;">
           <%= link_to current_user.name, current_user, class: "btn btn-success" %>
           <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
@@ -46,12 +42,19 @@
             method: :delete %></li>
           </ul>
         </div>
-        <ul class="nav navbar-nav navbar-right">
+        <div class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav">
+          <li>
+            <% if current_user.admin? %>
+            <%= render_notifications_of current_user, fallback: 'default'%>
+              <%= image_tag "bell", class: "bell"%>
+            <% end %>
+          </li>
           <li class="dropdown">
             <% author_convs = current_user.authored_conversations %>
             <% received_convs = current_user.received_conversations %>
             <% convs = author_convs | received_convs %>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Conversations (<b><%= convs.count %></b>)</a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= image_tag "message", class: "mess-icon"%></a>
             <ul class="dropdown-menu notify-drop">
               <div class="notify-drop-title">
                 <div class="row">
@@ -84,6 +87,7 @@
             </ul>
           </li>
         </ul>
+        </div>
 			<% end %>
     </div>
   </div>
